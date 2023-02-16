@@ -1,0 +1,9 @@
+{
+	"folders": [
+		{
+			"path": "bin/..",
+			"file_exclude_patterns": ["VSCode-project"],
+		}
+	],
+	"settings": {}
+}
