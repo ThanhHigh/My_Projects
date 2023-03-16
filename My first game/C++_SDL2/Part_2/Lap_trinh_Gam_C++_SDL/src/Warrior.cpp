@@ -7,9 +7,17 @@
 
 Warrior::Warrior(Properties* props) : Character(props)
 {
-    m_RigidBody = new RigidBody();
-    m_Animation = new Animation();
+    m_JumpTime = JUMP_TIME;
+    m_JumpForce = JUMP_FORCE;
 
+    m_Collider = new Collider;
+    m_Collider->setBuffer(0, 0, 0, 0);
+
+    m_RigidBody = new RigidBody();
+    m_RigidBody->setGravity(0.0f); //Change the gravity to fit its Game
+
+    m_Animation = new Animation();
+    //m_Animation->setPropsAnimation();
 
 }
 
@@ -50,6 +58,11 @@ void Warrior::updateObject(float deltaTime)
 
     //Transform
     m_Transform->transLateX(m_RigidBody->getPosition().X);
+
+    //Udpate Origin(Camera view)
+    m_Origin->x = m_Transform->X + m_Width/2;
+    m_Origin->y = m_Transform->Y + m_Height/2;
+
     //Animation
     m_Animation->updateAnimation();
 }

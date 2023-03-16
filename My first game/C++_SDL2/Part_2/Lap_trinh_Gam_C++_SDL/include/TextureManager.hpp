@@ -16,7 +16,9 @@ public:
     void cleanTexture();
 
     void draw(std::string id, int x, int y, int width, int height, SDL_RendererFlip filp = SDL_FLIP_NONE);
+    void drawtile(std::string tilesetID, int tilesize, int x, int y, int row, int frame, SDL_RendererFlip flip = SDL_FLIP_NONE);
     void drawFrame(std::string id, int x, int y, int width, int height, int row, int frame, SDL_RendererFlip flip = SDL_FLIP_NONE);
+
 private:
     TextureManager(){}
     std::map<std::string, SDL_Texture*> m_TextureMap;

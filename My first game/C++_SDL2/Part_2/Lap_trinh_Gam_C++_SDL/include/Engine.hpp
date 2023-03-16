@@ -2,6 +2,9 @@
 #define ENGINE_hPP
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+
+#include "GameMap.hpp"
 
 #define SCREEN_WIDTH 960
 #define SCREEN_HEIGHT 640
@@ -23,6 +26,7 @@ public:
     void renderGame();
     void eventsGame();
 
+    inline GameMap* getMap(){ return m_level0map; } //
     inline bool isRunningGame(){return m_Running;}
     inline SDL_Renderer* getRenderer(){return m_Renderer;}
 
@@ -35,6 +39,8 @@ private:
 
     SDL_Window* m_Window;
     SDL_Renderer* m_Renderer;
+
+    GameMap* m_level0map;
 };
 
 #endif //ENGINE_HPP

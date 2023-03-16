@@ -8,15 +8,30 @@
 
 struct TileSet
 {
-    // int First
+    int firstID, lastID;
+    int rowCout, colCount;
+    int tileCount, tileSize;
+
+    std::string name, source;
+
+    
 };
 
+using tileSetList = std::vector <TileSet>;
+using tileMap = std::vector <std::vector <int> >;
 
-class TileLayer
+
+class TileLayer : public Layer
 {
     public:
-
+        TileLayer(int tilesize, int colcount, int rowcount, tileMap tilemap, tileSetList tilesets);
+        virtual void render();
+        virtual void update();
+        inline tileMap getTileMap() { return m_TileMap; }
     private:
-
+        int m_TileSize;
+        int m_RowCount, m_ColCount;
+        tileMap m_TileMap;
+        tileSetList m_TileSets;
 };
-endif; //TIleLayer_hpp
+#endif //TIleLayer_hpp

@@ -8,23 +8,24 @@
 class GameMap
 {
     public:
-        void renderMapGame()
+        void render()
         {
             for (unsigned int i = 0; i < m_MapLayers.size(); i++)
-                m_MapLayers[i]->renderLayer();
+                m_MapLayers[i]->render();
         }
 
-        void updateMapGame()
+        void update()
         {
             for (unsigned int i = 0; i < m_MapLayers.size(); i++)
             {
-                m_MapLayers[i]->updateLayer();
+                m_MapLayers[i]->update();
             }
         }
 
-        inline std::vector m_GetMapLayers() { return m_MapLayers; }
+        inline std::vector <Layer*> m_GetMapLayers() { return m_MapLayers; }
     private:
-        std::vector <Layer*> m_MapLayers;
+        friend class MapParser;
+        std::vector < Layer* > m_MapLayers;
 };
 
 #endif //GameMap_hpp

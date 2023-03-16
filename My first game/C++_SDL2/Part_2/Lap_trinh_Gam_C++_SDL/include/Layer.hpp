@@ -4,8 +4,8 @@
 class Layer
 {
     public:
-        virtual void renderLayer() = 0; //Use for other class to create Map - Parents class
-        virtual void updateLayer() = 0; //Gonna be update by it's child class
+        virtual void render() = 0; //Use for other class to create Map - Parents class
+        virtual void update() = 0; //Gonna be update by it's child class
 };
 
 
