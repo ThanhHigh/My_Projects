@@ -58,19 +58,19 @@ bool Engine::initGame()
     m_MapList.push_back(m_level0map);
     m_level1map = MapParser::GetInstance()->GetMap("map2");
     m_MapList.push_back(m_level1map);
-    // m_level2map = MapParser::GetInstance()->GetMap("map3");
-    // m_MapList.push_back(m_level2map);
-    // m_level3map = MapParser::GetInstance()->GetMap("map4");
-    // m_MapList.push_back(m_level3map);
-    // m_level4map = MapParser::GetInstance()->GetMap("map5");
-    // m_MapList.push_back(m_level4map);
-    // m_levelspawnmap = MapParser::GetInstance()->GetMap("map_spawn");
-    // m_MapList.push_back(m_levelspawnmap);
+    m_level2map = MapParser::GetInstance()->GetMap("map3");
+    m_MapList.push_back(m_level2map);
+    m_level3map = MapParser::GetInstance()->GetMap("map4");
+    m_MapList.push_back(m_level3map);
+    m_level4map = MapParser::GetInstance()->GetMap("map5");
+    m_MapList.push_back(m_level4map);
+    m_levelspawnmap = MapParser::GetInstance()->GetMap("map_spawn");
+    m_MapList.push_back(m_levelspawnmap);
 
     //Debug
     // std::cout << m_MapList.size() << std::endl;
     
-    // Engine::GetInstance()->createLevel();
+    Engine::GetInstance()->createLevel();
 
     player = new Warrior (new Properties("Player", 400, 320, 120, 80));
 
@@ -95,9 +95,6 @@ bool Engine::initGame()
 void Engine::updateGame()
 {
     float deltaTime = Timer::GetInstance()->getDeltaTime();
-
-    m_level0map->update();
-    m_level1map->update();
     
     for (int i = 0; i < m_MapList.size(); i++)
         m_MapList[i]->update();
@@ -114,17 +111,16 @@ void Engine::renderGame()
     //render Background
     TextureManager::getInstance()->draw("Back_ground", 0, 0, 1920, 1080);
     //Render map
-    m_level0map->render();
-    m_level1map->render(LEVEL_WIDTH, 0);
+
     // //Debug add level
     // m_level2map->render(LEVEL_WIDTH, 0);
-    // m_level3map->render(LEVEL_WIDTH * 2, 0);
+    // // m_level3map->render(LEVEL_WIDTH * 2, 0);
     // for (int i = 0; i < m_MapList.size(); i++)
     //     m_MapList[i]->render();
 
 
     //Render and update map to infinity
-    // render_update_LevelPart();
+    render_update_LevelPart();
 
     //Player
     player->drawObject();
@@ -189,11 +185,11 @@ void Engine::render_update_LevelPart()
 
     if (viewBoxX < LEVEL_WIDTH)
     {
-        // for (int i = 0; i < TOTAL_LEVEL_MAP; i++)
-        // {
-        //     m_LevelPartMapList.at(i).renderLevelPart(i * LEVEL_WIDTH);           
-        // }
-        m_level0map->render();
+        for (int i = 0; i < TOTAL_LEVEL_MAP; i++)
+        {
+            m_LevelPartMapList.at(i).renderLevelPart(i * LEVEL_WIDTH);           
+        }
+        // m_level0map->render();
     }
     else
     {
