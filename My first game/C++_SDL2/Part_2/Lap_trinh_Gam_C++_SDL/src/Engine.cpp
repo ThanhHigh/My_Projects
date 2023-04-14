@@ -187,6 +187,7 @@ void Engine::render_update_LevelPart()
     {
         for (int i = 0; i < TOTAL_LEVEL_MAP; i++)
         {
+            // m_currMap = m_LevelPartMapList.at(i).
             m_LevelPartMapList.at(i).renderLevelPart(i * LEVEL_WIDTH);           
         }
         // m_level0map->render();
@@ -195,6 +196,7 @@ void Engine::render_update_LevelPart()
     {
         for (int i = 0; i < TOTAL_LEVEL_MAP; i++)
         {
+            // m_currMap = m_LevelPartMapList.at(i);
             m_LevelPartMapList.at(i).renderLevelPart();
         }
     }

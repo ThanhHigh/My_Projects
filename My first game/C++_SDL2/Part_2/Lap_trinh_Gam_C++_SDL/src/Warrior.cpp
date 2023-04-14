@@ -29,7 +29,7 @@ Warrior::Warrior(Properties* props) : Character(props)
     m_Collider->setBuffer(-50, -35, 85, 55);
 
     m_RigidBody = new RigidBody();
-    m_RigidBody->setGravity(0.0); 
+    m_RigidBody->setGravity(0.0f); 
     
     m_Animation = new Animation();
     m_Animation->setPropsAnimation(m_TextureID, 1, 10, 80);

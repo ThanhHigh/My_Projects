@@ -36,7 +36,7 @@ public:
     bool createLevel();
     void eventsGame();
 
-    inline GameMap* getMap(){ return m_level0map; } 
+    inline GameMap* getMap(){ return m_currMap; }
     inline bool isRunningGame(){ return m_Running; }
     inline SDL_Renderer* getRenderer(){ return m_Renderer; }
     
@@ -55,6 +55,8 @@ private:
     GameMap* m_level3map;
     GameMap* m_level4map;
     GameMap* m_levelspawnmap;
+    //When render alaways update current map
+    GameMap* m_currMap;
 
     // An aray to store levelmap list
     std::vector <GameMap*> m_MapList;
