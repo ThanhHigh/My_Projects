@@ -7,8 +7,6 @@
 class Collider
 {
     public:
-        Collider();
-        ~Collider();
         //check collision by using Rectangle by SDL_Rect
         inline SDL_Rect Get(){ return m_Box; }
         //to m_Box only around the char not all the imager. 
@@ -21,11 +19,11 @@ class Collider
         void Set(int x, int y, int w, int h)
         {
             m_Box = {
-                x = m_Buffer.x;
-                y = m_Buffer.y;
-                w = m_Buffer.w;
-                h = m_Buffer.h;
-            }
+                x - m_Buffer.x,
+                y - m_Buffer.y,
+                w - m_Buffer.w,
+                h - m_Buffer.h
+            };
         }
 
     private:

@@ -11,11 +11,12 @@
 class CollisionHandler
 {
     public:
-        inline static CollisionHandler* getInstance(){
+        inline static CollisionHandler* getInstance()
+        {
             return s_Instance = (s_Instance != nullptr) ? s_Instance : new CollisionHandler();
         }
 
-        //methods
+        //Methods
         ////Collision any kind of objects and map, by box collider
         bool MapCollision(SDL_Rect a); 
         ////Check collision (ex: Player and Enemy)

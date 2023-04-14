@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL.h>
 
+enum Axis {HORIZONTAL, VERTICAL};
+
 class KeyboardInput
 {
 public:
@@ -16,15 +18,14 @@ public:
     void Listen();
     bool getKeyDown(SDL_Scancode key);
 
+    int getAxisKey(Axis axis);
+
 private:
-    static KeyboardInput* s_Instance;
     void keyUp();
     void keyDown();
 
     const Uint8* m_KeyStates;
-
+    static KeyboardInput* s_Instance;
 };
-
-
 
 #endif //KeyboardInput_hpp

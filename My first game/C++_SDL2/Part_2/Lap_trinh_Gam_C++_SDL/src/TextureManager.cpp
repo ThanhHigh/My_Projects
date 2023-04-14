@@ -2,6 +2,8 @@
 #include "Engine.hpp"
 #include "Camera.hpp"
 
+#include "tinyxml.h"
+
 bool TextureManager::loadTexture(std::string id, std::string filename)
 {
     SDL_Surface* surface = IMG_Load(filename.c_str());
@@ -67,4 +69,28 @@ void TextureManager::cleanTexture()
     m_TextureMap.clear();
 
     SDL_Log("Texture Map Clean!");
+}
+
+bool TextureManager::parseTextures(std::string sources)
+{
+    TiXmlDocument xml;
+    xml.LoadFile(sources);
+    if (xml.Error())
+    {
+        std::cout << "Failed to Load: " << sources << " " << xml.ErrorDesc() << std::endl;
+        return false;
+    }
+
+    TiXmlElement* root = xml.RootElement();
+    for (TiXmlElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
+    {
+        if (e->Value() == std::string("texture"))
+        {
+            std::string id = e->Attribute("id");
+            std::string src = e->Attribute("source");
+            loadTexture(id, src);
+        }
+    }
+    std::cout << "Textures Parse success!" << std::endl;
+    return true;
 }

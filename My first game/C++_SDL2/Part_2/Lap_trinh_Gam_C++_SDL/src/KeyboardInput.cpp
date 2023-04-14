@@ -47,3 +47,27 @@ void KeyboardInput::keyDown()
     m_KeyStates = SDL_GetKeyboardState(nullptr);
 }
 
+int KeyboardInput::getAxisKey(Axis axis)
+{
+    int res;
+    switch (axis)
+    {
+    case HORIZONTAL:
+        if (getKeyDown(SDL_SCANCODE_D) || getKeyDown(SDL_SCANCODE_RIGHT))
+            res = 1;
+        if (getKeyDown(SDL_SCANCODE_A) || getKeyDown(SDL_SCANCODE_LEFT))
+            res = -1;
+        break;
+    
+    case VERTICAL:
+        if (getKeyDown(SDL_SCANCODE_W) || getKeyDown(SDL_SCANCODE_UP))
+            res = 1;
+        if (getKeyDown(SDL_SCANCODE_S) || getKeyDown(SDL_SCANCODE_DOWN))
+            res = -1;
+        break;
+    default:
+        res = 0;
+        break;
+    }
+    return res;
+}

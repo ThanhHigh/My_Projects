@@ -8,8 +8,14 @@
 #include "Vector2D.hpp"
 
 //Constances
-#define JUMP_TIME 15.0f;
-#define JUMP_FORCE 10.0f;
+#define JUMP_TIME 10.0f
+#define JUMP_FORCE 10.0f
+#define RUN_FORCE  5.0f
+#define ATTACKCOMBO_TIME 40.0f
+#define ATTACK_TIME 32.0f
+
+const int FORWARD = 1;
+const int BACKWARD = -1;
 
 class Warrior : public Character
 {
@@ -20,9 +26,21 @@ public:
     virtual void updateObject(float deltaTime);
     virtual void cleanObject();
 private:
-    bool m_IsJumping;
-    bool m_IsGrounded;
+    void AnimationState();
 
+private:
+    //state
+    bool m_isRunning;
+    bool m_IsJumping;
+    bool m_isFalling;
+    bool m_IsGrounded;
+    bool m_isAttacking;
+    bool m_isCrouching;
+    bool m_isComboAttacking;
+    //bool m_isHurting;
+
+    float m_AttackTime;
+    float m_ComboAttackingTime;
     float m_JumpTime; //How Long Player can Jump
     float m_JumpForce; 
 

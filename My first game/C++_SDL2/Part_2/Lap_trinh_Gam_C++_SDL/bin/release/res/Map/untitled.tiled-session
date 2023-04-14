@@ -1,0 +1,293 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2.tmx",
+    "expandedProjectPaths": [
+        "Project",
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "#Cave_build_tileset": {
+            "scaleInDock": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map.tmx": {
+            "scale": 0.5938117524700988,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1076.940625273667,
+                "y": 568.3619406252737
+            }
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map.tmx#tileset": {
+            "scaleInDock": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 714,
+                "y": 430
+            }
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2.tmx#Cave_build_ttiledset": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2.tmx#Cave_tiledset": {
+            "scaleInDock": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2.tmx#Cave_tilesdet": {
+            "scaleInDock": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2.tmx#Cave_tileset": {
+            "scaleInDock": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2.tmx#Fire_back_tile": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2B.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 672,
+                "y": 286.3333333333333
+            }
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2B.tmx#Cave_tiledset": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2B.tmx#Fire_back_tile": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2C.tmx": {
+            "scale": 0.69765625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 670.8174692049272,
+                "y": 383.42665173572226
+            }
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2C.tmx#Cave_tiledset": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2C.tmx#Fire_back_tile": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2D.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 780.6666666666666,
+                "y": 284.66666666666663
+            }
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2D.tmx#Cave_tiledset": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2D.tmx#Fire_back_tile": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2E.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 407,
+                "y": 479
+            }
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2E.tmx#Cave_tiled_set": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2E.tmx#Cave_tiledset": {
+            "scaleInDock": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2E.tmx#Fire_back_tile": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2spawn.tmx": {
+            "scale": 0.69765625,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 658.6338185890257,
+                "y": 370.52631578947364
+            }
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2spawn.tmx#Cave_build_tileset": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2spawn.tmx#Cave_tiledset": {
+            "scaleInDock": 1
+        },
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2spawn.tmx#Fire_back_tile": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Project/Cave_Wall.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1.22,
+            "scaleInEditor": 1.5
+        },
+        "Project/Map2.tmx": {
+            "scale": 3,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 748.8333333333333,
+                "y": 319.5
+            }
+        },
+        "Project/Map2.tmx#Cave_Stone_2": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.33
+        },
+        "Project/Map2.tmx#Cave_build_ttiledset": {
+            "scaleInDock": 0.75
+        },
+        "Project/Map2.tmx#Cave_stone": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "Project/Map2.tmx#Dungion_2_tileset": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1.22,
+            "scaleInEditor": 1
+        },
+        "Project/Map2.tmx#Dungion_background": {
+            "scaleInDock": 0.33
+        },
+        "Project/Map2.tmx#Dungion_collums": {
+            "scaleInDock": 1.22,
+            "scaleInEditor": 1
+        },
+        "Project/Map2.tmx#Dungion_tileset": {
+            "scaleInDock": 1.22,
+            "scaleInEditor": 5.5
+        },
+        "Project/Map2.tmx#Fire_back_tile": {
+            "scaleInDock": 1
+        },
+        "Project/Map2.tmx#Fire_back_tile_set_2": {
+            "scaleInDock": 1
+        },
+        "Project/Map2B.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 672,
+                "y": 383.66666666666663
+            }
+        },
+        "Project/Map2B.tmx#Cave_tiledset": {
+            "scaleInDock": 1
+        },
+        "Project/Map2B.tmx#Fire_back_tile": {
+            "scaleInDock": 1
+        },
+        "Project/Map2C.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 672,
+                "y": 384.5
+            }
+        },
+        "Project/Map2C.tmx#Cave_tiledset": {
+            "scaleInDock": 1
+        },
+        "Project/Map2C.tmx#Fire_back_tile": {
+            "scaleInDock": 1
+        },
+        "Project/Map2D.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 882.3333333333333,
+                "y": 267.6666666666667
+            }
+        },
+        "Project/Map2D.tmx#Cave_tiledset": {
+            "scaleInDock": 1
+        },
+        "Project/Map2D.tmx#Fire_back_tile": {
+            "scaleInDock": 1
+        },
+        "Project/Map2E.tmx": {
+            "scale": 2,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 1110.75,
+                "y": 178.75
+            }
+        },
+        "Project/Map2E.tmx#Cave_tiled_set": {
+            "scaleInDock": 1
+        },
+        "Project/Map2E.tmx#Fire_back_tile": {
+            "scaleInDock": 1
+        },
+        "Project/Map2spawn.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 698.6666666666666,
+                "y": 189.99999999999997
+            }
+        },
+        "Project/Map2spawn.tmx#Cave_build_tileset": {
+            "scaleInDock": 1
+        },
+        "Project/Map2spawn.tmx#Fire_back_tile": {
+            "scaleInDock": 1
+        }
+    },
+    "last.imagePath": "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Source/1",
+    "map.height": 48,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 84,
+    "openFiles": [
+        "Project/Map2B.tmx",
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2B.tmx",
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2.tmx"
+    ],
+    "project": "untitled.tiled-project",
+    "recentFiles": [
+        "Project/Map2B.tmx",
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2B.tmx",
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2.tmx",
+        "Project/Map2.tmx",
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2E.tmx",
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map.tmx",
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2spawn.tmx",
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2C.tmx",
+        "C:/Users/ADMIN/Desktop/C++ VS/Project_ca_nhan/My first game/C++_SDL2/Part_2/Lap_trinh_Gam_C++_SDL/res/Map/Work/Map2D.tmx",
+        "Project/Map2D.tmx",
+        "Project/Map2spawn.tmx",
+        "Project/Map2E.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    },
+    "tileset.transparentColor": "#106aca",
+    "tileset.useTransparentColor": false
+}

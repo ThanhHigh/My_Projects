@@ -9,17 +9,16 @@ void Animation::updateAnimation()
     m_SpriteFrame = (SDL_GetTicks() / m_AnimationSpeed) % m_FrameCount;
 }
 
-void Animation::drawAnimation(float x, float y, int spriteWidth, int spriteHeight)
+void Animation::drawAnimation(float x, float y, int spriteWidth, int spriteHeight,  SDL_RendererFlip flip)
 {
-    TextureManager::getInstance()->drawFrame(m_TextureID, x, y, spriteWidth, spriteHeight, m_SpriteRow, m_SpriteFrame, m_Flip);
+    TextureManager::getInstance()->drawFrame(m_TextureID, x, y, spriteWidth, spriteHeight, m_SpriteRow, m_SpriteFrame, flip);
 
 }
 
-void Animation::setPropsAnimation(std::string textureID, int spriteRow, int frameCount, int animSpeed, SDL_RendererFlip flip)
+void Animation::setPropsAnimation(std::string textureID, int spriteRow, int frameCount, int animSpeed)
 {
     m_TextureID = textureID;
     m_SpriteRow = spriteRow;
     m_FrameCount = frameCount;
     m_AnimationSpeed = animSpeed;
-    m_Flip = flip;
 }

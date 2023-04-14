@@ -5,11 +5,11 @@
 
 //Const
 const float UNKNOWN_MASS = 0.6;
-const float GRAVITY = 9.8;
+const float GRAVITY = 5.0f; 
 
 const float RIGHTWARD = 1; //x
 const float LEFTWARD = -1;
-const float UPWARD = -1; //y
+const float UPWARD = -1; //
 const float DOWNWARD = 1;
 
 // bool RIGHTSIGHT;

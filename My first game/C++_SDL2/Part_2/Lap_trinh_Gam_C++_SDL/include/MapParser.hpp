@@ -39,7 +39,10 @@ class MapParser
     private:
         MapParser(){}
         static MapParser* s_Instance;
-        std::map<std::string, GameMap*> m_MapDict;
+        std::map <std::string, GameMap*> m_MapDict;
+
+        friend class Engine;
+        friend class LevelPart;
 };
 
 

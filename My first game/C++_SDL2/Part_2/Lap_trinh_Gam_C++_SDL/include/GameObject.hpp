@@ -57,7 +57,7 @@ class GameObject : public IObject
         virtual void cleanObject() = 0;
 
     protected: //To create out inheritance system( the concept where one class 'inherits' from another class  )
-        Points* m_Origin;
+        Points* m_Origin; 
         Transform* m_Transform;
         int m_Width, m_Height;
         std::string m_TextureID;

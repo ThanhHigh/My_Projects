@@ -1,5 +1,6 @@
 
 #include "MapParser.hpp"
+#include "LevelPart.hpp"
 
 //Initilize
 MapParser* MapParser::s_Instance = nullptr;
@@ -14,7 +15,23 @@ MapParser* MapParser::s_Instance = nullptr;
 
 bool MapParser::load()
 {
-    return Parse("map1", "res/Map.tmx");
+    //flag
+
+    // res/
+
+    bool success = true;
+    if (!Parse("map1", "res/Map2.tmx")) success = false;
+    if (!Parse("map2", "res/Map2B.tmx")) success = false;
+    // if (!Parse("map3", "res/Map2C.tmx")) success = false;
+    // if (!Parse("map4", "res/Map2D.tmx")) success = false;
+    // if (!Parse("map5", "res/Map2E.tmx")) success = false;
+    // if (!Parse("map_spawn", "res/Map2spawn.tmx")) success = false;
+
+    if (success == false)
+    {
+        std::cout << "FAILED TO LOAD MAPS" << std::endl;
+    }
+    return success;
 }
 
 
@@ -41,7 +58,7 @@ bool MapParser::Parse(std::string id, std::string source)
     for (TiXmlElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
     {
         if (e->Value() == std::string("tileset"))
-        {
+        {   
             tilesets.push_back(ParseTileset(e));
         }
     }
