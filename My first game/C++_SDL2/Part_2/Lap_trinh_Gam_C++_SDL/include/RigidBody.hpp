@@ -5,7 +5,7 @@
 
 //Const
 const float UNKNOWN_MASS = 0.6;
-const float GRAVITY = 5.8f; 
+const float GRAVITY = 5.0f; 
 
 const float RIGHTWARD = 1; //x
 const float LEFTWARD = -1;
