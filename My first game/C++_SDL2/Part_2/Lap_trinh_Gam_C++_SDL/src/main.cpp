@@ -16,12 +16,13 @@ int main(int argc, char* args[])
     while (Engine::GetInstance()->isRunningGame())
     {
         Engine::GetInstance()->eventsGame();
-        //Ban dầu là ntn
-        // Engine::GetInstance()->updateGame();
-        // Engine::GetInstance()->renderGame();
-        //Debug
-        Engine::GetInstance()->renderGame();
+        // Ban dầu là ntn
         Engine::GetInstance()->updateGame();
+        Engine::GetInstance()->renderGame();
+        // //Debug
+        // Engine::GetInstance()->renderGame();
+        // Engine::GetInstance()->updateGame();
+
         Timer::GetInstance()->timerTicks();
     }
 

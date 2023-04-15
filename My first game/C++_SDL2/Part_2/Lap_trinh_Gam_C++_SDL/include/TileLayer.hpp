@@ -13,8 +13,6 @@ struct TileSet
     int tileCount, tileSize;
 
     std::string name, source;
-
-    
 };
 
 using tileSetList = std::vector <TileSet>;

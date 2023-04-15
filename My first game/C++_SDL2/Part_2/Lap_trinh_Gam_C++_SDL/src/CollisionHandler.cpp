@@ -21,6 +21,12 @@ bool CollisionHandler::checkCollision(SDL_Rect a, SDL_Rect b)
 
 bool CollisionHandler::MapCollision(SDL_Rect a)
 {
+    //Add Debug
+    m_CollisionLayer = (TileLayer*) Engine::GetInstance()->getMap()->m_GetMapLayers().back(); //back() is Collision
+    m_CollisionTileMap =  m_CollisionLayer->getTileMap();
+    //Add Debug
+
+
     //to fit with the data of the mapj
     int tileSize = 16;
     int rowCount = 48;
@@ -52,8 +58,8 @@ bool CollisionHandler::MapCollision(SDL_Rect a)
             // std::cout << i << " " << j << " " << m_CollisionTileMap[i][j] << std::endl;
             if (m_CollisionTileMap[i][j] > 0) { //Debug: defalut is  if (m_CollisionTileMap[i][j] > 0) {
 
-                std::cout << "Oh Im Stuck " << i << " " << j << " " <<  m_CollisionTileMap[i][j] << std::endl;
-                return false; //Debug return true;
+                // std::cout << "Oh Im Stuck " << i << " " << j << " " <<  m_CollisionTileMap[i][j] << std::endl;
+                return true; //Debug return true;
             }
         }
     }

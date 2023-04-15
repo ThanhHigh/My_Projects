@@ -29,6 +29,8 @@ class CollisionHandler
         tileMap m_CollisionTileMap;
         //Matrix of collision
         TileLayer* m_CollisionLayer;
+
+        friend class Engine;
 };
 
 #endif //CCOLLISIONHANDLER_HPP

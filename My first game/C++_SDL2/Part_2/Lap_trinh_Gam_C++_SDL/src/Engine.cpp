@@ -216,10 +216,16 @@ void Engine::updateLevelMap()
             int LevelPosX = m_LevelPartMapList.at(i).getX();
             int ObjectX  = Camera::getInstance()->getTargetPos()->x;
             int viewBoxX = Camera::getInstance()->getPosition().X;
-            if (ObjectX >= LevelPosX && ObjectX <= (LevelPosX + LEVEL_WIDTH))
+            if (ObjectX >= LevelPosX && ObjectX <= (LevelPosX + LEVEL_WIDTH - 1))
             {
+                
                 m_currMap = m_LevelPartMapList.at(i).getMapfromLevel();
                 break;
             }
     }
+    //Debug
+    for (int i = 0; i < m_MapList.size(); i++)
+        if (m_currMap == m_MapList.at(i)) std::cout << i << std::endl;
+    //Debug
+
 }
