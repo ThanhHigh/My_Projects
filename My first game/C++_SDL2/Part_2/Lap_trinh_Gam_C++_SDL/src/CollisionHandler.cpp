@@ -32,21 +32,28 @@ bool CollisionHandler::MapCollision(SDL_Rect a)
     int top_tile = a.y / tileSize;
     int bottom_tile = (a.y + a.h) / tileSize;
 
+    //Add for infinity map
+    if (left_tile > colCount) left_tile = left_tile % colCount;
+    if (right_tile > colCount) right_tile  = right_tile % colCount;
+    if (top_tile > colCount) top_tile = top_tile % colCount;
+    if (bottom_tile > colCount) bottom_tile = bottom_tile % colCount;
+
     if (left_tile < 0) left_tile = 0; //Debug
-    // if (right_tile > colCount) right_tile = colCount - 1; //Debug if (right_tile > colCount) right_tile = colCount - 1; //Map vo tan thi khong can cai nay
+    if (right_tile > colCount) right_tile = colCount - 1; //Debug if (right_tile > colCount) right_tile = colCount - 1; 
     if (top_tile < 0) top_tile = 0; //Debug
     if (bottom_tile > rowCount) bottom_tile = rowCount - 1;//Debug if (bottom_tile > rowCount) bottom_tile = rowCount - 1;
-
-
+    
     //Check to no where in map have collision( where tile value more than 0)
     for (int i = top_tile; i <= bottom_tile; i++)
     {
         for (int j = left_tile; j <= right_tile; j++)
         {
+            //Debug
+            // std::cout << i << " " << j << " " << m_CollisionTileMap[i][j] << std::endl;
             if (m_CollisionTileMap[i][j] > 0) { //Debug: defalut is  if (m_CollisionTileMap[i][j] > 0) {
 
                 std::cout << "Oh Im Stuck " << i << " " << j << " " <<  m_CollisionTileMap[i][j] << std::endl;
-                return true; //Debug return true;
+                return false; //Debug return true;
             }
         }
     }

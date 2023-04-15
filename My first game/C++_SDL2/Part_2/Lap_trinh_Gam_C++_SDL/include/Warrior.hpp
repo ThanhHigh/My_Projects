@@ -9,7 +9,7 @@
 
 //Constances
 #define JUMP_TIME 10.0f
-#define JUMP_FORCE 10.0f
+#define JUMP_FORCE 13.0f
 #define RUN_FORCE  3.5f
 #define ATTACKCOMBO_TIME 40.0f
 #define ATTACK_TIME 32.0f

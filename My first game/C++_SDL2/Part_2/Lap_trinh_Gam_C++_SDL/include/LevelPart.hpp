@@ -34,6 +34,7 @@ class LevelPart
         void renderLevelPart(int p_x);
         void setLevelX(GameMap* gameMap);
         void setLevelX(int p_x);
+        inline GameMap* getMapfromLevel(){ return levelgamemap; }
 
 
     private:

@@ -29,7 +29,7 @@ Warrior::Warrior(Properties* props) : Character(props)
     m_Collider->setBuffer(-50, -35, 85, 55);
 
     m_RigidBody = new RigidBody();
-    m_RigidBody->setGravity(0.0f); 
+    m_RigidBody->setGravity(GRAVITY); 
     
     m_Animation = new Animation();
     m_Animation->setPropsAnimation(m_TextureID, 1, 10, 80);
@@ -145,7 +145,7 @@ void Warrior::updateObject(float deltaTime)
     m_LastSafePosition.X = m_Transform->X; //Safe the safe position of char before update
     m_Transform->X += m_RigidBody->getPosition().X; //Update the transform then update collider !
     m_Collider->Set(m_Transform->X, m_Transform->Y, 96, 96);
-    if (CollisionHandler::getInstance()->MapCollision(m_Collider->Get()))
+    if (CollisionHandler::getInstance()->MapCollision(m_Collider->Get()))   
     {
         m_Transform->X = m_LastSafePosition.X;
     }

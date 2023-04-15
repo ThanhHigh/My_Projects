@@ -66,7 +66,6 @@ bool Engine::initGame()
     m_MapList.push_back(m_level4map);
     m_levelspawnmap = MapParser::GetInstance()->GetMap("map_spawn");
     m_MapList.push_back(m_levelspawnmap);
-
     //Debug
     // std::cout << m_MapList.size() << std::endl;
     
@@ -95,9 +94,9 @@ bool Engine::initGame()
 void Engine::updateGame()
 {
     float deltaTime = Timer::GetInstance()->getDeltaTime();
-    
-    for (int i = 0; i < m_MapList.size(); i++)
-        m_MapList[i]->update();
+
+    //Map
+    updateLevelMap();
 
     player->updateObject(deltaTime);
 
@@ -110,14 +109,6 @@ void Engine::renderGame()
 
     //render Background
     TextureManager::getInstance()->draw("Back_ground", 0, 0, 1920, 1080);
-    //Render map
-
-    // //Debug add level
-    // m_level2map->render(LEVEL_WIDTH, 0);
-    // // m_level3map->render(LEVEL_WIDTH * 2, 0);
-    // for (int i = 0; i < m_MapList.size(); i++)
-    //     m_MapList[i]->render();
-
 
     //Render and update map to infinity
     render_update_LevelPart();
@@ -182,13 +173,12 @@ void Engine::render_update_LevelPart()
         m_LevelPartMapList.erase(m_LevelPartMapList.begin());
         m_LevelPartMapList.push_back(level);
     }
-
     if (viewBoxX < LEVEL_WIDTH)
     {
         for (int i = 0; i < TOTAL_LEVEL_MAP; i++)
         {
-            // m_currMap = m_LevelPartMapList.at(i).
-            m_LevelPartMapList.at(i).renderLevelPart(i * LEVEL_WIDTH);           
+            m_LevelPartMapList.at(i).renderLevelPart(i * LEVEL_WIDTH);     
+            // m_currMap = m_LevelPartMapList.at(i).getMapfromLevel();      
         }
         // m_level0map->render();
     }
@@ -196,8 +186,40 @@ void Engine::render_update_LevelPart()
     {
         for (int i = 0; i < TOTAL_LEVEL_MAP; i++)
         {
-            // m_currMap = m_LevelPartMapList.at(i);
             m_LevelPartMapList.at(i).renderLevelPart();
+            // m_currMap = m_LevelPartMapList.at(i).getMapfromLevel();
         }
+    }
+}
+
+void Engine::updateLevelMap()
+{
+    //  //Debug check x viewbox
+    // int LevelPosX = m_LevelPartMapList.at(0).getX();
+    // int viewBoxX  = Camera::getInstance()->getViewBox().x;
+    // if ((LevelPosX - viewBoxX) <= (-LEVEL_WIDTH + 1)) 
+    // {
+    //     int setXlevelMap = m_LevelPartMapList.at(m_LevelPartMapList.size() - 1).getX();
+    //     setXlevelMap += LEVEL_WIDTH;
+    //     int random = rand() % (TOTAL_MAP - 1);
+    //     GameMap* mapTemp = m_MapList.at(random);
+    //     m_LevelPartMapList.at(0).setLevelMap(mapTemp);
+    //     m_LevelPartMapList.at(0).setLevelX(setXlevelMap);
+
+    //     LevelPart level = m_LevelPartMapList.at(0);
+    //     m_LevelPartMapList.erase(m_LevelPartMapList.begin());
+    //     m_LevelPartMapList.push_back(level);
+    // }
+    //Xu ly va cham trong map
+    for (int i = 0; i < TOTAL_LEVEL_MAP; i++)
+    {
+            int LevelPosX = m_LevelPartMapList.at(i).getX();
+            int ObjectX  = Camera::getInstance()->getTargetPos()->x;
+            int viewBoxX = Camera::getInstance()->getPosition().X;
+            if (ObjectX >= LevelPosX && ObjectX <= (LevelPosX + LEVEL_WIDTH))
+            {
+                m_currMap = m_LevelPartMapList.at(i).getMapfromLevel();
+                break;
+            }
     }
 }

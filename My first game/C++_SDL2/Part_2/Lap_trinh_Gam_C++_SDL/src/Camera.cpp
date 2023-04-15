@@ -9,7 +9,7 @@ void Camera::update(float deltatime)
     if (m_target != nullptr)
     {
         m_ViewBox.x = m_target->x - SCREEN_WIDTH / 2; 
-        m_ViewBox.y = m_target->y - SCREEN_HEIGHT / 2;
+        m_ViewBox.y = m_target->y - SCREEN_HEIGHT; //m_ViewBox.y = m_target->y - SCREEN_HEIGHT / 2;
 
         if (m_ViewBox.x < 0)
         {

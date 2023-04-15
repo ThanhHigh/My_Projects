@@ -33,6 +33,7 @@ public:
     void updateGame();
     void renderGame();
     void render_update_LevelPart();
+    void updateLevelMap();
     bool createLevel();
     void eventsGame();
 
@@ -56,7 +57,7 @@ private:
     GameMap* m_level4map;
     GameMap* m_levelspawnmap;
     //When render alaways update current map
-    GameMap* m_currMap;
+    GameMap* m_currMap = nullptr;
 
     // An aray to store levelmap list
     std::vector <GameMap*> m_MapList;
