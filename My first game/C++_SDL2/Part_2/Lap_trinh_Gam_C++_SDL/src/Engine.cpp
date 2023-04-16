@@ -71,7 +71,7 @@ bool Engine::initGame()
     
     Engine::GetInstance()->createLevel();
 
-    player = new Warrior (new Properties("Player", 400, 320, 120, 80));
+    player = new Warrior (new Properties("Player", 400, 10, 120, 80));
 
     TextureManager::getInstance()->parseTextures("res/Texture.tml");
 
@@ -223,9 +223,9 @@ void Engine::updateLevelMap()
                 break;
             }
     }
-    //Debug
-    for (int i = 0; i < m_MapList.size(); i++)
-        if (m_currMap == m_MapList.at(i)) std::cout << i << std::endl;
-    //Debug
+    // //Debug
+    // for (int i = 0; i < m_MapList.size(); i++)
+    //     if (m_currMap == m_MapList.at(i)) std::cout << i << std::endl;
+    // //Debug
 
 }
