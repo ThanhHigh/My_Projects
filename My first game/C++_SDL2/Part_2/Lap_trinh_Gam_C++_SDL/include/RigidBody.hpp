@@ -5,7 +5,7 @@
 
 //Const
 const float UNKNOWN_MASS = 0.6;
-const float GRAVITY = 5.0f; 
+const float GRAVITY = 7.0f; 
 
 const float RIGHTWARD = 1; //x
 const float LEFTWARD = -1;
@@ -33,6 +33,13 @@ class RigidBody
         Vector2D getPosition();
         Vector2D getVelocity();
         Vector2D getAccelaration();
+
+        //set
+        void setPosition(float X, float Y);
+        void setVelocity(float X, float Y);
+        void setAccelarate(float X, float Y);
+        void setVelocityY(float Y);
+        void setAccelarateY(float Y);
         
         //Set up world physical
         //Forces
@@ -60,6 +67,7 @@ class RigidBody
         Vector2D m_Position; //Vị trí
         Vector2D m_Velocity; //Vận tốc
         Vector2D m_Accelaration; //Gia tốc
+        Vector2D m_newAccelaration;
 };
 
 

@@ -8,11 +8,13 @@
 #include "Vector2D.hpp"
 
 //Constances
-#define JUMP_TIME 15.0f
-#define JUMP_FORCE 10.0f
-#define RUN_FORCE  2.5f
+#define KNIGHT_MASS 5.0f
+#define JUMP_TIME 13.0f
+#define JUMP_FORCE 50.0f
+#define RUN_FORCE  40.0f
 #define ATTACKCOMBO_TIME 40.0f
 #define ATTACK_TIME 32.0f
+
 
 const int FORWARD = 1;
 const int BACKWARD = -1;

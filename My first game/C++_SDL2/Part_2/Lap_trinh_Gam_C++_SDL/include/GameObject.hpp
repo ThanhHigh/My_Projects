@@ -42,7 +42,7 @@ class GameObject : public IObject
             m_Width = props->Width;
             m_Height = props->Height;
             m_Flip = props->Flip;
-            //Transform pointer need to init here, if do not will cause gugs cz of Pointers
+            //Transform pointer need to init here, if do not will cause bugs cz of Pointers
             m_Transform = new Transform(props->X, props->Y);
             float px = props->X + props->Width/2;
             float py = props->Y + props->Height/2;

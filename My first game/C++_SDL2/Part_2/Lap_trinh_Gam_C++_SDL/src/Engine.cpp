@@ -26,7 +26,7 @@ bool Engine::initGame()
     //Window Flag
     SDL_WindowFlags window_flags = (SDL_WindowFlags)(SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
 
-    m_Window = SDL_CreateWindow("RuntheSky",
+    m_Window = SDL_CreateWindow("Run",
                                  SDL_WINDOWPOS_CENTERED,
                                  SDL_WINDOWPOS_CENTERED,
                                  SCREEN_WIDTH,
@@ -98,12 +98,18 @@ void Engine::updateGame()
     //Map
     updateLevelMap();
 
+    // SDL_RenderClear(m_Renderer);
+    // SDL_SetRenderDrawColor(m_Renderer, 191, 148, 228, 120);
+    // render_update_LevelPart();
+
     player->updateObject(deltaTime);
 
     Camera::getInstance()->update(deltaTime);
 }
 void Engine::renderGame()
 {
+    float deltaTime = Timer::GetInstance()->getDeltaTime();    
+
     SDL_RenderClear(m_Renderer);
     SDL_SetRenderDrawColor(m_Renderer, 191, 148, 228, 120);
 
@@ -113,8 +119,10 @@ void Engine::renderGame()
     //Render and update map to infinity
     render_update_LevelPart();
 
-    //Player
+    //Player update and render
+
     player->drawObject();
+    // player->updateObject(deltaTime);
 
     SDL_RenderPresent(m_Renderer);
 }
@@ -173,7 +181,7 @@ void Engine::render_update_LevelPart()
         m_LevelPartMapList.erase(m_LevelPartMapList.begin());
         m_LevelPartMapList.push_back(level);
     }
-    if (viewBoxX < LEVEL_WIDTH)
+    if (viewBoxX == 0)
     {
         for (int i = 0; i < TOTAL_LEVEL_MAP; i++)
         {

@@ -2,14 +2,14 @@
 #define Timer_hpp
 
 const int TARGET_FPS = 60;
-const float TARGET_DELTATIME = 1.5f;
+const float TARGET_DELTATIME = 0.5f;
 
 class Timer
 {
     public:
     inline static Timer* GetInstance()
     {
-        return s_Instance = (s_Instance != nullptr)? s_Instance : new Timer();
+        return s_Instance = (s_Instance != nullptr) ? s_Instance : new Timer();
     }
 
     inline float getDeltaTime() { return m_DeltaTime; }
