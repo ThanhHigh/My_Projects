@@ -27,6 +27,9 @@ int main(int argc, char* args[])
     }
 
     Engine::GetInstance()->clearGame();
-    
+
+    //Debug
+    SDL_Delay(2000);
+    //Debug
     return 0;
 }

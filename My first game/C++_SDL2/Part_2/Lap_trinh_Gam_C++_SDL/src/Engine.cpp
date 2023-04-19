@@ -5,6 +5,7 @@
 #include "Timer.hpp"
 #include "MapParser.hpp"
 #include "Camera.hpp"
+#include "BackWall.hpp"
 
 #include <iostream>
 
@@ -89,6 +90,9 @@ bool Engine::initGame()
     //Take the target value of player
     Camera::getInstance()->setTarget(player->getOrigin());
 
+    //BackWall
+    if (!(BackWall::GetInstance()->createBackWall())) m_Running = false;
+
     return m_Running = true;
 }
 void Engine::updateGame()
@@ -107,8 +111,7 @@ void Engine::updateGame()
     Camera::getInstance()->update(deltaTime);
 }
 void Engine::renderGame()
-{
-    float deltaTime = Timer::GetInstance()->getDeltaTime();    
+{ 
 
     SDL_RenderClear(m_Renderer);
     SDL_SetRenderDrawColor(m_Renderer, 191, 148, 228, 120);
@@ -123,6 +126,9 @@ void Engine::renderGame()
 
     player->drawObject();
     // player->updateObject(deltaTime);
+
+    //Wall Frame
+    BackWall::GetInstance()->draw();
 
     SDL_RenderPresent(m_Renderer);
 }
@@ -145,6 +151,17 @@ void Engine::clearGame()
     IMG_Quit();
     SDL_Quit();
 }
+
+
+
+
+
+
+
+
+
+
+
 
 bool Engine::createLevel()
 {

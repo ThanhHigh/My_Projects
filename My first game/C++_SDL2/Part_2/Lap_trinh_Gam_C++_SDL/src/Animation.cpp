@@ -12,7 +12,6 @@ void Animation::updateAnimation()
 void Animation::drawAnimation(float x, float y, int spriteWidth, int spriteHeight,  SDL_RendererFlip flip)
 {
     TextureManager::getInstance()->drawFrame(m_TextureID, x, y, spriteWidth, spriteHeight, m_SpriteRow, m_SpriteFrame, flip);
-
 }
 
 void Animation::setPropsAnimation(std::string textureID, int spriteRow, int frameCount, int animSpeed)

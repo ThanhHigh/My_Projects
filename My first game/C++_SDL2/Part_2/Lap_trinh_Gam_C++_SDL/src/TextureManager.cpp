@@ -62,6 +62,7 @@ void TextureManager::dropTexture(std::string id)
 
 void TextureManager::cleanTexture()
 {
+    
     std::map<std::string, SDL_Texture*>::iterator it;
     for (it = m_TextureMap.begin(); it != m_TextureMap.end(); it++)
         SDL_DestroyTexture(it->second);
