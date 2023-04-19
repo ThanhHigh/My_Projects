@@ -69,7 +69,7 @@ bool CollisionHandler::MapCollision(SDL_Rect a)
 
             if (m_CollisionTileMap[i][j] > 0)  //Debug: defalut is  if (m_CollisionTileMap[i][j] > 0) {
             { 
-                std::cout << "Oh Im Stuck " << i << " " << j << " " <<  m_CollisionTileMap[i][j] << std::endl;
+                // std::cout << "Oh Im Stuck " << i << " " << j << " " <<  m_CollisionTileMap[i][j] << std::endl;
                 return true; //Debug return true;
             }
         }

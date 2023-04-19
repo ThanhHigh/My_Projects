@@ -110,7 +110,7 @@ void Warrior::updateObject(float deltaTime)
     {
         m_IsJumping = true;
         m_IsGrounded = false;
-        m_RigidBody->applyForceY(UPWARD * m_JumpForce * 15);
+        m_RigidBody->applyForceY(UPWARD * m_JumpForce * 5);
     }
     if (KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_K) && m_IsJumping && m_JumpTime > 0)
     {
@@ -127,9 +127,11 @@ void Warrior::updateObject(float deltaTime)
     if (m_RigidBody->getVelocity().Y > 0 && !m_IsGrounded)
     {
         m_isFalling = true;
+        m_RigidBody->setGravity(GRAVITY/1.5);
     }
     else{
         m_isFalling = false;
+        m_RigidBody->setGravity(GRAVITY);
     }
 
     //Attack timer
@@ -248,6 +250,7 @@ void Warrior::updateObject(float deltaTime)
     //Udpate Origin(Camera view)
     m_Origin->x = m_Transform->X + m_Width/2; //Debug
     m_Origin->y = m_Transform->Y + m_Height/2; //Debug
+
 
     //Animation
     AnimationState();
