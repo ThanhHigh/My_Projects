@@ -22,15 +22,14 @@ bool BackWall::createBackWall()
     //set Animation
     b_Animation->setPropsAnimation("BackWall", 1, 15, 100);
 
-    b_Animation->updateAnimation();
-
-    b_Animation->drawAnimation(10, 10, 256, 768);
-
     return flag;
 }
 
 void BackWall::draw()
 {
+    //update Animation
+    b_Animation->updateAnimation();
+
     //draw
     b_Animation->drawAnimation(10, 10, 256, 1280);
 }
