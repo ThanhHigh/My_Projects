@@ -41,13 +41,10 @@ void BackWall::draw()
 //positon
 void BackWall::udpate()
 {
-    //Chase Char
+    //Chase Char : Chase Camera
     X = Camera::getInstance()->getViewBox().x;
     Y = Camera::getInstance()->getViewBox().y;
 
-    
-
-    
 }
 
 BackWall::~BackWall()

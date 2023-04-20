@@ -3,13 +3,16 @@
 //Initilize our instances
 Camera* Camera::s_instance = nullptr;
 
+
 void Camera::update(float deltatime)
 {
     //Check whether target exist
     if (m_target != nullptr)
     {
-        m_ViewBox.x = m_target->x - SCREEN_WIDTH / 2; 
-        m_ViewBox.y = m_target->y - SCREEN_HEIGHT; //m_ViewBox.y = m_target->y - SCREEN_HEIGHT / 2;
+        if (m_target->x + 16 - m_ViewBox.x >= 0.6 * float(SCREEN_WIDTH))
+            m_ViewBox.x = m_target->x + 16 - 0.6 * float(SCREEN_WIDTH);
+
+        m_ViewBox.y = m_target->y - SCREEN_HEIGHT;
 
         if (m_ViewBox.x < 0)
         {
@@ -21,6 +24,11 @@ void Camera::update(float deltatime)
             m_ViewBox.y = 0;
         }
 
+        if (m_ViewBox.y > SCREEN_HEIGHT - m_ViewBox.h)
+        {
+            m_ViewBox.y = SCREEN_HEIGHT - m_ViewBox.h;
+        }
+
         // if (m_ViewBox.x > (2*SCREEN_WIDTH - m_ViewBox.w))
         // {
         //     m_ViewBox.x = (2*SCREEN_WIDTH - m_ViewBox.w);
@@ -30,7 +38,16 @@ void Camera::update(float deltatime)
         // {
         //     m_ViewBox.y = (2*SCREEN_HEIGHT - m_ViewBox.h);
         // }
-
-        m_position = Vector2D(m_ViewBox.x, m_ViewBox.y);
     }
+
+    //Chase the Char with Velocity
+    //Nhan vat chua chet
+    m_ViewBox.x += camVel;
+    if (camVel < 4) camAcc = WALL_ACC;
+    if (camVel > 4) camAcc = 0.0005;
+    camVel += camAcc;
+    if (camVel >= 5) camVel = WALL_VEL_MAX;
+
+    //Udate Position
+    m_position = Vector2D(m_ViewBox.x, m_ViewBox.y);
 }

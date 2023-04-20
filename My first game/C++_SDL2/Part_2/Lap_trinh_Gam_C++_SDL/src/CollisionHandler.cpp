@@ -53,10 +53,6 @@ bool CollisionHandler::MapCollision(SDL_Rect a)
     if (bottom_tile >= rowCount) bottom_tile = rowCount - 1;//Debug if (bottom_tile > rowCount) bottom_tile = rowCount - 1;
     // if (left_tile >= colCount) left_tile = colCount - 1;
     // if (right_tile >= colCount) right_tile = colCount - 1; //Debug if (right_tile > colCount) right_tile = colCount - 1; 
-    //Debug
-    if (left_tile > right_tile) std::cout << "Failed" << std::endl;
-    //Debug
-
 
     //Check to no where in map have collision( where tile value more than 0)
     for (int i = top_tile; i <= bottom_tile; i++)

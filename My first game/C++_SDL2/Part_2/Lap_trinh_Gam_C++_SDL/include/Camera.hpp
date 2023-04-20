@@ -11,9 +11,9 @@
 const int SCREEN_WIDTH = 1344;
 const int SCREEN_HEIGHT = 768;
 
-const float WALL_VEL = 4.0f;
-const float WALL_ACC = 1.0f;
-const float WALL_VEL_MAX = 10.0f;
+const float WALL_VEL = 0.1f;
+const float WALL_ACC = 0.001f;
+const float WALL_VEL_MAX = 5.0f;
 
 class Camera
 {
@@ -43,7 +43,8 @@ class Camera
         //view box
         SDL_Rect m_ViewBox;
         static Camera* s_instance;
-        float camVel, camAcc;
+        float camVel = WALL_VEL;
+        float camAcc = 0.0f;
 
         friend class Warrior;
         friend class Engine;
