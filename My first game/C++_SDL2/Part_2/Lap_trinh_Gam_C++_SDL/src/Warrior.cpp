@@ -248,21 +248,14 @@ void Warrior::updateObject(float deltaTime)
     // // m_RigidBody->getPosition().Log();
     // //Debug
 
-    
+      
     //Udpate Origin(Camera view)
     m_Origin->x = m_Transform->X + m_Width/2; //Debug
     m_Origin->y = m_Transform->Y + m_Height/2; //Debug
 
-    if (m_Origin->x < 256 && !(m_isDead) && (m_DeathTime > 0)) 
-    {
+    if (m_Origin->x - Camera::getInstance()->m_ViewBox.x < 256)
         m_isDead = true;
-        m_DeathTime -= deltaTime;
-        if (m_DeathTime <= 0 && m_Origin->x > 256)
-        {
-            m_isDead = false;
-            m_DeathTime = DEATH_TIME;
-        }
-    }
+
     //Animation
     AnimationState();
     m_Animation->updateAnimation();
