@@ -6,6 +6,7 @@
 #include "Animation.hpp"
 
 
+
 class BackWall
 {
 
@@ -21,14 +22,15 @@ class BackWall
         void draw();
 
         //position
+        void udpate();
 
-        //collision player & update
 
         //Deconstructor
         ~BackWall();
     private:
         static BackWall* s_Instance;
         Animation* b_Animation;
+        float X, Y;
 };
 
 

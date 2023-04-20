@@ -109,6 +109,8 @@ void Engine::updateGame()
     player->updateObject(deltaTime);
 
     Camera::getInstance()->update(deltaTime);
+
+    BackWall::GetInstance()->udpate();
 }
 void Engine::renderGame()
 { 

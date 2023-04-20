@@ -14,6 +14,7 @@
 #define RUN_FORCE  6.0f
 #define ATTACKCOMBO_TIME 40.0f
 #define ATTACK_TIME 33.0f
+#define DEATH_TIME 30.0f
 
 
 const int FORWARD = 1;
@@ -39,12 +40,15 @@ private:
     bool m_isAttacking;
     bool m_isCrouching;
     bool m_isComboAttacking;
+    bool m_isDead;
+    inline bool Dead() { return m_isDead; }
     //bool m_isHurting;
 
     float m_AttackTime;
     float m_ComboAttackingTime;
     float m_JumpTime; //How Long Player can Jump
     float m_JumpForce; 
+    float m_DeathTime;
 
     Collider* m_Collider; //Box around the Player
     Animation* m_Animation;

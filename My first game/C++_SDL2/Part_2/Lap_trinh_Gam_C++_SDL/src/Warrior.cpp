@@ -18,12 +18,14 @@ Warrior::Warrior(Properties* props) : Character(props)
     m_isAttacking = false;
     m_isCrouching = false;
     m_isComboAttacking = false;
+    m_isDead = false;
 
     m_Flip = SDL_FLIP_NONE;
     m_JumpTime = JUMP_TIME;
     m_JumpForce = JUMP_FORCE;
     m_AttackTime = ATTACK_TIME;
     m_ComboAttackingTime = ATTACKCOMBO_TIME;
+    m_DeathTime = DEATH_TIME;
 
     m_Collider = new Collider;
     m_Collider->setBuffer(-50, -35, 85, 55);
@@ -106,13 +108,13 @@ void Warrior::updateObject(float deltaTime)
     // //Debug
 
     //Jump
-    if (KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_K) && m_IsGrounded)
+    if ((KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_K) || KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_W) || KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_SPACE)) && m_IsGrounded)
     {
         m_IsJumping = true;
         m_IsGrounded = false;
         m_RigidBody->applyForceY(UPWARD * m_JumpForce * 5);
     }
-    if (KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_K) && m_IsJumping && m_JumpTime > 0)
+    if ((KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_K) || KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_W) || KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_SPACE)) && m_IsJumping && m_JumpTime > 0)
     {
         m_JumpTime -= deltaTime;
         m_IsGrounded = false;
@@ -251,10 +253,21 @@ void Warrior::updateObject(float deltaTime)
     m_Origin->x = m_Transform->X + m_Width/2; //Debug
     m_Origin->y = m_Transform->Y + m_Height/2; //Debug
 
-
+    if (m_Origin->x < 256 && !(m_isDead) && (m_DeathTime > 0)) 
+    {
+        m_isDead = true;
+        m_DeathTime -= deltaTime;
+        if (m_DeathTime <= 0 && m_Origin->x > 256)
+        {
+            m_isDead = false;
+            m_DeathTime = DEATH_TIME;
+        }
+    }
     //Animation
     AnimationState();
     m_Animation->updateAnimation();
+
+    
 }
 
 void Warrior::AnimationState()
@@ -293,6 +306,11 @@ void Warrior::AnimationState()
     if (m_IsJumping)
     {
         m_Animation->setPropsAnimation("Player_Jump", 1, 3, 100);
+    }
+
+    if (m_isDead)
+    {
+        m_Animation->setPropsAnimation("Player_Dead", 1, 10, 100);
     }
 }
 

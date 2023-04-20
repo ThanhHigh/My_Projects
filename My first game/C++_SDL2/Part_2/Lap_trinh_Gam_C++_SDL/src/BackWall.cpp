@@ -2,6 +2,8 @@
 #include <iostream>
 
 #include "BackWall.hpp"
+#include "Camera.hpp"
+#include "CollisionHandler.hpp"
 
 BackWall* BackWall::s_Instance = nullptr;
 
@@ -31,10 +33,23 @@ void BackWall::draw()
     b_Animation->updateAnimation();
 
     //draw
-    b_Animation->drawAnimation(10, 10, 256, 1280);
+    b_Animation->drawAnimation(X + 2, Y + 2, 256, 1280);
 }
 
-//draw
+
+
+//positon
+void BackWall::udpate()
+{
+    //Chase Char
+    X = Camera::getInstance()->getViewBox().x;
+    Y = Camera::getInstance()->getViewBox().y;
+
+    
+
+    
+}
+
 BackWall::~BackWall()
 {
     TextureManager::getInstance()->dropTexture("BackWall");

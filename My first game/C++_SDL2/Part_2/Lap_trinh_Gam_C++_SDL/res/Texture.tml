@@ -13,5 +13,5 @@
 
     <texture id = "Back_ground" source = "res/back_ground_2.png"/>
     <texture id = "BackWall" source = "res/Explosion.png"/>
-
+    <texture id = "Player_Dead" source = "res/_Death.png"/>
 </textures>

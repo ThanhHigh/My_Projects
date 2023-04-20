@@ -11,6 +11,10 @@
 const int SCREEN_WIDTH = 1344;
 const int SCREEN_HEIGHT = 768;
 
+const float WALL_VEL = 4.0f;
+const float WALL_ACC = 1.0f;
+const float WALL_VEL_MAX = 10.0f;
+
 class Camera
 {
     public:
@@ -36,11 +40,12 @@ class Camera
         //tagert camera follow
         Points* m_target;
         Vector2D m_position;
-
         //view box
         SDL_Rect m_ViewBox;
-
         static Camera* s_instance;
+        float camVel, camAcc;
+
+        friend class Warrior;
         friend class Engine;
 };
 
