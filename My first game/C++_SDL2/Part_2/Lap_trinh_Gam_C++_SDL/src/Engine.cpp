@@ -159,12 +159,6 @@ void Engine::clearGame()
 
 
 
-
-
-
-
-
-
 bool Engine::createLevel()
 {
     for (int i = 0; i < TOTAL_LEVEL_MAP; i++)
