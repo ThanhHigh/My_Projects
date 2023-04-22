@@ -43,15 +43,6 @@ void Warrior::drawObject()
 {
     m_Animation->drawAnimation(m_Transform->X, m_Transform->Y, m_Width, m_Height, m_Flip);
 
-    // //Debug: Add m_Transform->Log();
-    // m_Transform->Log();
-
-    // //temporary draw box collider
-    // Vector2D cam = Camera::getInstance()->getPosition();
-    // SDL_Rect box = m_Collider->Get();
-    // box.x -= cam.X; //Recaculate the position of the box
-    // box.y -= cam.Y;
-    // SDL_RenderDrawRect(Engine::GetInstance()->getRenderer(), &box);
 }
 
 void Warrior::updateObject(float deltaTime)
@@ -95,17 +86,6 @@ void Warrior::updateObject(float deltaTime)
         m_RigidBody->unsetForce();
         m_isComboAttacking = true;
     }
-
-    // //Debug
-    // if (m_IsGrounded)
-    // {
-    //     //Make charater stop at
-    //     // m_RigidBody->setAccelarateY(0.0f);
-    //     m_RigidBody->setVelocityY(0.0f);
-    //     m_RigidBody->applyForceY(-50.0f);
-    //     // m_RigidBody->applyFriction(10.0);
-    // }
-    // //Debug
 
     //Jump
     if ((KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_K) || KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_W) || KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_SPACE)) && m_IsGrounded)
@@ -156,6 +136,18 @@ void Warrior::updateObject(float deltaTime)
         m_ComboAttackingTime = ATTACKCOMBO_TIME;
     }
 
+    //Death
+    if (m_isDead && m_DeathTime > 0)
+    {
+        m_DeathTime -= deltaTime;
+    }
+    else
+    {
+        m_isDead = false;
+        m_DeathTime = DEATH_TIME;
+    }
+
+
     //Move on X axis
     m_RigidBody->updateRigidBody(deltaTime);
     m_LastSafePosition.X = m_Transform->X; //Safe the safe position of char before update
@@ -182,71 +174,6 @@ void Warrior::updateObject(float deltaTime)
         m_IsGrounded = false;
     }
 
-    // if (m_IsJumping)
-    // {
-    //     m_Animation->setPropsAnimation("Player_Jump", 1, 3, 100);
-    // }
-
-    // // Debug
-    // // m_Transform->Log();
-
-    //Move on X axis
-    // m_RigidBody->updateRigidBody(deltaTime);
-    // m_LastSafePosition.X = m_Transform->X; //Safe the safe position of char before update
-    // m_Transform->X = m_RigidBody->getPosition().X; //Update the transform then update collider !
-    // m_Collider->Set(m_Transform->X, m_Transform->Y, 96, 96);
-    // if (CollisionHandler::getInstance()->MapCollision(m_Collider->Get()))   
-    // {
-    //     m_Transform->X = m_LastSafePosition.X;
-    //     // float tempN_ForeceX = m_RigidBody->getForce().X;
-    //     // m_RigidBody->applyForceX(-tempN_ForeceX);
-    // }
-
-    // //move on Y axis
-    // m_RigidBody->updateRigidBody(deltaTime);
-    // m_LastSafePosition.Y = m_Transform->Y;
-    // m_Transform->Y = m_RigidBody->getPosition().Y;
-    // m_Collider->Set(m_Transform->X, m_Transform->Y, 96, 96);
-    // if (CollisionHandler::getInstance()->MapCollision(m_Collider->Get()))
-    // {
-    //     if (m_RigidBody->getVelocity().Y > 0)
-    //     {
-    //         if (m_isFalling)
-    //         {
-    //             m_IsGrounded = true;
-    //             //m_RigidBody->setGravity(0.0f);
-    //         }
-    //     }
-    //     else if (m_RigidBody->getVelocity().Y < 0)
-    //     {
-    //         Vector2D temp = m_RigidBody->getPosition();
-    //         temp = temp - m_RigidBody->getVelocity();
-    //         m_RigidBody->setPosition(temp.X, temp.Y);
-    //         m_RigidBody->setVelocity(0.0, 0.0);
-    //     }
-    //     m_Transform->Y = m_LastSafePosition.Y;
-    // }
-    // else
-    // {
-    //     m_IsGrounded = false;
-    // }
-
-    // if (m_IsJumping)
-    // {
-    //     m_Animation->setPropsAnimation("Player_Jump", 1, 3, 100);
-    // }
-
-    //Fall infinity
-    if (m_RigidBody->getPosition().Y >= SCREEN_HEIGHT)
-    {
-        m_RigidBody->setPosition(30,10);
-        //Debug cout
-    }
-    //Fall infinity
-
-    // //Log
-    // // m_RigidBody->getPosition().Log();
-    // //Debug
 
       
     //Udpate Origin(Camera view)
@@ -254,8 +181,11 @@ void Warrior::updateObject(float deltaTime)
     m_Origin->y = m_Transform->Y + m_Height/2; //Debug
 
     if (m_Origin->x - Camera::getInstance()->m_ViewBox.x < 256)
+    {
         m_isDead = true;
-
+        m_Flip = SDL_FLIP_HORIZONTAL;
+        m_Transform->X += 15;
+    }
     //Animation
     AnimationState();
     m_Animation->updateAnimation();

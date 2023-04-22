@@ -22,7 +22,7 @@ bool BackWall::createBackWall()
     }
 
     //set Animation
-    b_Animation->setPropsAnimation("BackWall", 1, 15, 100);
+    b_Animation->setPropsAnimation("BackWall", 1, 15, 150);
 
     return flag;
 }
@@ -33,7 +33,7 @@ void BackWall::draw()
     b_Animation->updateAnimation();
 
     //draw
-    b_Animation->drawAnimation(X + 2, Y + 2, 256, 1280);
+    b_Animation->drawAnimation(X + 2, Y + 2, 256, 768);
 }
 
 

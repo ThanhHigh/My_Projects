@@ -14,7 +14,7 @@
 #define RUN_FORCE  6.0f
 #define ATTACKCOMBO_TIME 40.0f
 #define ATTACK_TIME 33.0f
-#define DEATH_TIME 30.0f
+#define DEATH_TIME 35.0f
 
 
 const int FORWARD = 1;
