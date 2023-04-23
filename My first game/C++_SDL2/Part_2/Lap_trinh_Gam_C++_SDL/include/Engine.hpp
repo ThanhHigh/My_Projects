@@ -21,11 +21,7 @@ class Engine
 {
 
 public:
-    //getInstance to make sure that it only has one Engine for whole program
-    static Engine* GetInstance()
-    {
-        return s_Instance = (s_Instance != nullptr) ? s_Instance : new Engine();
-    }
+    
     bool initGame();
     void quitGame();
     void clearGame();
@@ -37,10 +33,18 @@ public:
     bool createLevel();
     void eventsGame();
 
+    void PopState();
+    void PushState(GameState* current);
+    void ChangeState(GameState* target);
+
     inline GameMap* getMap(){ return m_currMap; }
     inline bool isRunningGame(){ return m_Running; }
     inline SDL_Renderer* getRenderer(){ return m_Renderer; }
-    
+    //getInstance to make sure that it only has one Engine for whole program
+    static Engine* GetInstance()
+    {
+        return s_Instance = (s_Instance != nullptr) ? s_Instance : new Engine();
+    }
 private:
     Engine(){}
 
