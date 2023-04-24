@@ -12,6 +12,14 @@ CollisionHandler::CollisionHandler()
     m_CollisionTileMap =  m_CollisionLayer->getTileMap();
 }
 
+ void CollisionHandler::setCollisionMap(tileMap _tileMap, int _tilesize)
+ {
+    m_CollisionTileMap = _tileMap;
+    m_MapTileSize = _tilesize;
+    m_MapWidth = _tileMap.size();
+    m_MapHeight = _tileMap[0].size();
+ }
+
 bool CollisionHandler::checkCollision(SDL_Rect a, SDL_Rect b)
 {
     bool x_overlaps = (a.x < b.x + b.w) && (a.x + a.w > b.x);
@@ -27,10 +35,14 @@ bool CollisionHandler::MapCollision(SDL_Rect a)
     //Add Debug
 
 
-    //to fit with the data of the mapj
-    int tileSize = 16;
-    int rowCount = 48;
-    int colCount = 84;
+    //to fit with the data of the map
+    if (m_MapTileSize != 16) m_MapTileSize = 16;
+    if (m_MapWidth != 84) m_MapWidth = 84;
+    if (m_MapHeight != 48) m_MapHeight = 48;
+
+    int tileSize = m_MapTileSize;
+    int rowCount = m_MapHeight;
+    int colCount = m_MapWidth;
 
     //take the correct tile for loop under
     int left_tile = a.x / tileSize;
@@ -51,22 +63,15 @@ bool CollisionHandler::MapCollision(SDL_Rect a)
     if (left_tile < 0) left_tile = 0; //Debug
     if (top_tile < 0) top_tile = 0; //Debug
     if (bottom_tile >= rowCount) bottom_tile = rowCount - 1;//Debug if (bottom_tile > rowCount) bottom_tile = rowCount - 1;
-    // if (left_tile >= colCount) left_tile = colCount - 1;
-    // if (right_tile >= colCount) right_tile = colCount - 1; //Debug if (right_tile > colCount) right_tile = colCount - 1; 
 
-    //Check to no where in map have collision( where tile value more than 0)
     for (int i = top_tile; i <= bottom_tile; i++)
     {
         for (int j = left_tile; j <= right_tile; j++)
         {
-            //Debug
-            // std::cout << i << " " << j << " " << m_CollisionTileMap[i][j] << std::endl;
-            //Debug
 
-            if (m_CollisionTileMap[i][j] > 0)  //Debug: defalut is  if (m_CollisionTileMap[i][j] > 0) {
+            if (m_CollisionTileMap[i][j] > 0)  
             { 
-                // std::cout << "Oh Im Stuck " << i << " " << j << " " <<  m_CollisionTileMap[i][j] << std::endl;
-                return true; //Debug return true;
+                return true;
             }
         }
     }
@@ -74,28 +79,24 @@ bool CollisionHandler::MapCollision(SDL_Rect a)
     //What if left_tile > right_tile
     if (left_tile > right_tile)
     {
-        if (m_CollisionTileMap[top_tile][left_tile] > 0)  //Debug: defalut is  if (m_CollisionTileMap[i][j] > 0) {
+        if (m_CollisionTileMap[top_tile][left_tile] > 0)  
             { 
-                // std::cout << "Oh Im Stuck " << i << " " << j << " " <<  m_CollisionTileMap[i][j] << std::endl;
-                return true; //Debug return true;
+                return true; 
             }
-        if (m_CollisionTileMap[top_tile][right_tile] > 0)  //Debug: defalut is  if (m_CollisionTileMap[i][j] > 0) {
+        if (m_CollisionTileMap[top_tile][right_tile] > 0)  
             { 
-                // std::cout << "Oh Im Stuck " << i << " " << j << " " <<  m_CollisionTileMap[i][j] << std::endl;
-                return true; //Debug return true;
+                return true; 
             }
-        if (m_CollisionTileMap[bottom_tile][left_tile] > 0)  //Debug: defalut is  if (m_CollisionTileMap[i][j] > 0) {
+        if (m_CollisionTileMap[bottom_tile][left_tile] > 0)  
             { 
-                // std::cout << "Oh Im Stuck " << i << " " << j << " " <<  m_CollisionTileMap[i][j] << std::endl;
-                return true; //Debug return true;
+                return true; 
             }
-        if (m_CollisionTileMap[bottom_tile][right_tile] > 0)  //Debug: defalut is  if (m_CollisionTileMap[i][j] > 0) {
+        if (m_CollisionTileMap[bottom_tile][right_tile] > 0) 
             { 
-                // std::cout << "Oh Im Stuck " << i << " " << j << " " <<  m_CollisionTileMap[i][j] << std::endl;
-                return true; //Debug return true;
+                return true; 
             }
     }
 
-    return false; //Debug: Origin return false;
+    return false; 
 }
 

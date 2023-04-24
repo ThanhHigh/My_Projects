@@ -31,7 +31,7 @@ bool Menu::exit()
 }
 
 //CallBack
-void Menu::GameState()
+void Menu::startGame()
 {
     std::cout << "start game!\n";
 }

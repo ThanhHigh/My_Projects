@@ -1,4 +1,6 @@
 //Play_hpp
+#ifndef Play_hpp
+#define Play_hpp
 
 #include <iostream>
 #include "GameMap.hpp"

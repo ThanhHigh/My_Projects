@@ -16,11 +16,9 @@ class CollisionHandler
             return s_Instance = (s_Instance != nullptr) ? s_Instance : new CollisionHandler();
         }
 
-        //Methods
-        ////Collision any kind of objects and map, by box collider
         bool MapCollision(SDL_Rect a); 
-        ////Check collision (ex: Player and Enemy)
         bool checkCollision(SDL_Rect a, SDL_Rect b);
+        void setCollisionMap(tileMap _tileMap, int _tilesize);
 
     private:
         static CollisionHandler* s_Instance;
@@ -29,6 +27,8 @@ class CollisionHandler
         tileMap m_CollisionTileMap;
         //Matrix of collision
         TileLayer* m_CollisionLayer;
+        int m_MapTileSize;
+        int m_MapWidth, m_MapHeight;
 
         friend class Engine;
 };

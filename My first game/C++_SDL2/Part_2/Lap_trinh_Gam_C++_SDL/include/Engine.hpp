@@ -33,9 +33,9 @@ public:
     bool createLevel();
     void eventsGame();
 
-    void PopState();
-    void PushState(GameState* current);
-    void ChangeState(GameState* target);
+    // void PopState();
+    // void PushState(GameState* current);
+    // void ChangeState(GameState* target);
 
     inline GameMap* getMap(){ return m_currMap; }
     inline bool isRunningGame(){ return m_Running; }

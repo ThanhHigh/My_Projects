@@ -76,17 +76,6 @@ bool Engine::initGame()
 
     TextureManager::getInstance()->parseTextures("res/Texture.tml");
 
-    // TextureManager::getInstance()->loadTexture("Player_Fall", "res/_Fall.png");
-    // TextureManager::getInstance()->loadTexture("Player_Run", "res/_Run.png");
-    // TextureManager::getInstance()->loadTexture("Player","res/_Idle.png");
-    // TextureManager::getInstance()->loadTexture("Player_AttackCombo", "res/_AttackCombo.png");
-    // TextureManager::getInstance()->loadTexture("Player_Jump", "res/_Jump.png");
-    // TextureManager::getInstance()->loadTexture("Player_Crouch", "res/_Crouch.png");
-    // TextureManager::getInstance()->loadTexture("Player_AttackNoMovement", "res/_AttackNoMovement.png");
-    // TextureManager::getInstance()->loadTexture("Player-AttackComboNoMovement", "res/_AttackComboNoMovement.png");
-    // TextureManager::getInstance()->loadTexture("Back_ground", "res/back_ground_2.png");
-
-
     //Take the target value of player
     Camera::getInstance()->setTarget(player->getOrigin());
 
@@ -99,12 +88,7 @@ void Engine::updateGame()
 {
     float deltaTime = Timer::GetInstance()->getDeltaTime();
 
-    //Map
     updateLevelMap();
-
-    // SDL_RenderClear(m_Renderer);
-    // SDL_SetRenderDrawColor(m_Renderer, 191, 148, 228, 120);
-    // render_update_LevelPart();
 
     player->updateObject(deltaTime);
 
@@ -155,10 +139,6 @@ void Engine::clearGame()
 }
 
 
-
-
-
-
 bool Engine::createLevel()
 {
     for (int i = 0; i < TOTAL_LEVEL_MAP; i++)
@@ -198,8 +178,7 @@ void Engine::render_update_LevelPart()
     {
         for (int i = 0; i < TOTAL_LEVEL_MAP; i++)
         {
-            m_LevelPartMapList.at(i).renderLevelPart(i * LEVEL_WIDTH);     
-            // m_currMap = m_LevelPartMapList.at(i).getMapfromLevel();      
+            m_LevelPartMapList.at(i).renderLevelPart(i * LEVEL_WIDTH);       
         }
         // m_level0map->render();
     }
@@ -208,30 +187,12 @@ void Engine::render_update_LevelPart()
         for (int i = 0; i < TOTAL_LEVEL_MAP; i++)
         {
             m_LevelPartMapList.at(i).renderLevelPart();
-            // m_currMap = m_LevelPartMapList.at(i).getMapfromLevel();
         }
     }
 }
 
 void Engine::updateLevelMap()
 {
-    //  //Debug check x viewbox
-    // int LevelPosX = m_LevelPartMapList.at(0).getX();
-    // int viewBoxX  = Camera::getInstance()->getViewBox().x;
-    // if ((LevelPosX - viewBoxX) <= (-LEVEL_WIDTH + 1)) 
-    // {
-    //     int setXlevelMap = m_LevelPartMapList.at(m_LevelPartMapList.size() - 1).getX();
-    //     setXlevelMap += LEVEL_WIDTH;
-    //     int random = rand() % (TOTAL_MAP - 1);
-    //     GameMap* mapTemp = m_MapList.at(random);
-    //     m_LevelPartMapList.at(0).setLevelMap(mapTemp);
-    //     m_LevelPartMapList.at(0).setLevelX(setXlevelMap);
-
-    //     LevelPart level = m_LevelPartMapList.at(0);
-    //     m_LevelPartMapList.erase(m_LevelPartMapList.begin());
-    //     m_LevelPartMapList.push_back(level);
-    // }
-    //Xu ly va cham trong map
     for (int i = 0; i < TOTAL_LEVEL_MAP; i++)
     {
             int LevelPosX = m_LevelPartMapList.at(i).getX();
@@ -244,9 +205,19 @@ void Engine::updateLevelMap()
                 break;
             }
     }
-    // //Debug
-    // for (int i = 0; i < m_MapList.size(); i++)
-    //     if (m_currMap == m_MapList.at(i)) std::cout << i << std::endl;
-    // //Debug
-
 }
+
+// void PopState()
+// {
+
+// }
+    
+// void PushState(GameState* current)
+// {
+
+// }
+
+// void ChangeState(GameState* target)
+// {
+
+// }
