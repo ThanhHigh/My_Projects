@@ -6,6 +6,7 @@
 #include "MapParser.hpp"
 #include "Camera.hpp"
 #include "BackWall.hpp"
+#include "Play.hpp"
 
 #include <iostream>
 
@@ -15,6 +16,7 @@ KeyboardInput* KeyboardInput::s_Instance = nullptr;
 Engine* Engine::s_Instance = nullptr;
 TextureManager* TextureManager::s_Instance = nullptr;
 Warrior* player = nullptr;
+Play* playState = nullptr;
 
 bool Engine::initGame()
 {
@@ -67,8 +69,6 @@ bool Engine::initGame()
     m_MapList.push_back(m_level4map);
     m_levelspawnmap = MapParser::GetInstance()->GetMap("map_spawn");
     m_MapList.push_back(m_levelspawnmap);
-    //Debug
-    // std::cout << m_MapList.size() << std::endl;
     
     Engine::GetInstance()->createLevel();
 
@@ -82,7 +82,9 @@ bool Engine::initGame()
     //BackWall
     if (!(BackWall::GetInstance()->createBackWall())) m_Running = false;
 
-    return m_Running = true;
+    // if (!(playState->init())) m_Running = false;
+
+    // return m_Running = true;
 }
 void Engine::updateGame()
 {
@@ -95,6 +97,8 @@ void Engine::updateGame()
     Camera::getInstance()->update(deltaTime);
 
     BackWall::GetInstance()->udpate();
+
+    // playState->update();
 }
 void Engine::renderGame()
 { 
@@ -117,10 +121,12 @@ void Engine::renderGame()
     BackWall::GetInstance()->draw();
 
     SDL_RenderPresent(m_Renderer);
+    // playState->render();
 }
 void Engine::eventsGame()
 {
     KeyboardInput::getInstance()->Listen();
+    // playState->event();
 }
 void Engine::quitGame()
 {
@@ -128,6 +134,7 @@ void Engine::quitGame()
 }
 void Engine::clearGame()
 {
+    // playState->exit();
     TextureManager::getInstance()->cleanTexture();
     SDL_DestroyRenderer(m_Renderer);
     m_Renderer = nullptr;

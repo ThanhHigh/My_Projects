@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
 
 #include "GameMap.hpp"
 #include "MapParser.hpp"
@@ -28,10 +30,11 @@ public:
 
     void updateGame();
     void renderGame();
+    void eventsGame();
     void render_update_LevelPart();
     void updateLevelMap();
     bool createLevel();
-    void eventsGame();
+
 
     // void PopState();
     // void PushState(GameState* current);

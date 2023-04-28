@@ -19,17 +19,13 @@ int main(int argc, char* args[])
         // Ban dầu là ntn
         Engine::GetInstance()->updateGame();
         Engine::GetInstance()->renderGame();
-        //Debug
-        // Engine::GetInstance()->renderGame();
-        // Engine::GetInstance()->updateGame();
-
         Timer::GetInstance()->timerTicks();
     }
 
     Engine::GetInstance()->clearGame();
 
     //Debug
-    SDL_Delay(2000);
+    SDL_Delay(1500);
     //Debug
     return 0;
 }

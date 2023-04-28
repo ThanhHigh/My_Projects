@@ -5,6 +5,8 @@
 
 #include <vector> //to define array of Layers could have in Map
 
+
+
 class GameMap
 {
     public:
@@ -33,11 +35,20 @@ class GameMap
         inline int getMapX(){ return X; }
         inline void setMapX(int p_x){ X = p_x; }
 
+        void clean()
+        {
+            for (unsigned int i = 0; i < m_MapLayers.size(); i++)
+            {
+                m_MapLayers[i];
+            }
+        }
+
         inline std::vector <Layer*> m_GetMapLayers() { return m_MapLayers; }
     private:
         friend class MapParser;
         std::vector < Layer* > m_MapLayers;
         int X, Y; //Position of GameMap
 };
+
 
 #endif //GameMap_hpp

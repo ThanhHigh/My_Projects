@@ -1,8 +1,10 @@
 //CollisionHandler.cpp
 #include "CollisionHandler.hpp"
 #include "Engine.hpp"
+#include "Play.hpp"
 //Debug
 #include <iostream>
+
 
 CollisionHandler* CollisionHandler::s_Instance = nullptr;
 
@@ -30,7 +32,7 @@ bool CollisionHandler::checkCollision(SDL_Rect a, SDL_Rect b)
 bool CollisionHandler::MapCollision(SDL_Rect a)
 {
     //Add Debug
-    m_CollisionLayer = (TileLayer*) Engine::GetInstance()->getMap()->m_GetMapLayers().back(); //back() is Collision
+    m_CollisionLayer = (TileLayer*) Engine::GetInstance()->getMap()->m_GetMapLayers().back();; //back() is Collision
     m_CollisionTileMap =  m_CollisionLayer->getTileMap();
     //Add Debug
 
