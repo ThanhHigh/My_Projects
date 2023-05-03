@@ -50,7 +50,13 @@ void TextureManager::drawtile(std::string tilesetID, int tilesize, int x, int y,
     SDL_RenderCopyEx(Engine::GetInstance()->getRenderer(), m_TextureMap[tilesetID], &srcRect, &dstRect, 0, 0, flip);
 }
 
+void TextureManager::drawBG(std::string id, int x, int y, int width, int height, SDL_RendererFlip flip)
+{ 
+    SDL_Rect srcRect = {0, 0, width, height},
+             destRect = {x, y, width, height};
 
+    SDL_RenderCopyEx(Engine::GetInstance()->getRenderer(), m_TextureMap[id], &srcRect, &destRect, 0, nullptr, flip);
+}
 
 void TextureManager::dropTexture(std::string id)
 {

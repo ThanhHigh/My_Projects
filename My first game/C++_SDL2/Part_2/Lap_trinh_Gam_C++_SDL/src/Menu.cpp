@@ -3,25 +3,26 @@
 #include "Play.hpp"
 #include "Engine.hpp"
 #include "KeyboardInput.hpp"
+#include "Camera.hpp"
 
-Menu::Menu(){}
+Menu* Menu::s_Instance = nullptr;
 
 bool Menu::init()
 {
-    m_Ctxt = Engine::GetInstance()->getRenderer();
-    std::cout << "Menu initialized! " << std::endl;
-    return true;
+    isMenu = true;
 }
 
 void Menu::render()
 {
-    SDL_SetRenderDrawColor(m_Ctxt, 130, 40, 50, 200);
-    SDL_RenderClear(m_Ctxt);
-    //stuf
-    SDL_RenderPresent(m_Ctxt);
+    
+    if (isMenu) TextureManager::getInstance()->draw("Back_ground", 0, 0, 1920, 1080);
+    else return;
 }
 
-void Menu::update(){}
+void Menu::update()
+{
+    if (KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_B)) isMenu = false;
+}
 
 bool Menu::exit()
 {

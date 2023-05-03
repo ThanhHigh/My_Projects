@@ -7,7 +7,8 @@
 #include "Camera.hpp"
 #include "BackWall.hpp"
 #include "Play.hpp"
-
+#include "Menu.hpp"
+#include "GameOver.hpp"
 #include <iostream>
 
 #include <SDL2/SDL_image.h>
@@ -82,23 +83,33 @@ bool Engine::initGame()
     //BackWall
     if (!(BackWall::GetInstance()->createBackWall())) m_Running = false;
 
-    // if (!(playState->init())) m_Running = false;
-
-    // return m_Running = true;
+    //Menu&GameOVer
+    Menu::GetInstance()->init();
+    GameOver::GetInstance()->init();
 }
 void Engine::updateGame()
 {
     float deltaTime = Timer::GetInstance()->getDeltaTime();
 
-    updateLevelMap();
+    if (Menu::GetInstance()->isneedMenu())
+    {
+        //Menu
+        Menu::GetInstance()->update();
+    }
+    else
+    {
+        updateLevelMap();
 
-    player->updateObject(deltaTime);
+        player->updateObject(deltaTime);
 
-    Camera::getInstance()->update(deltaTime);
+        Camera::getInstance()->update(deltaTime);
 
-    BackWall::GetInstance()->udpate();
+        BackWall::GetInstance()->udpate();
 
-    // playState->update();
+        if (player->Dead()) GameOver::GetInstance()->updateDeath();
+
+        GameOver::GetInstance()->update();
+    }
 }
 void Engine::renderGame()
 { 
@@ -106,27 +117,33 @@ void Engine::renderGame()
     SDL_RenderClear(m_Renderer);
     SDL_SetRenderDrawColor(m_Renderer, 191, 148, 228, 120);
 
-    //render Background
-    TextureManager::getInstance()->draw("Back_ground", 0, 0, 1920, 1080);
+    if (Menu::GetInstance()->isneedMenu())
+    {
+        //Menu
+        Menu::GetInstance()->render();
+    }
+    else
+    {
+        //Render and update map to infinity
+        render_update_LevelPart();
 
-    //Render and update map to infinity
-    render_update_LevelPart();
+        //Player update and render
 
-    //Player update and render
+        player->drawObject();
+        // player->updateObject(deltaTime);
 
-    player->drawObject();
-    // player->updateObject(deltaTime);
+        //Wall Frame
+        BackWall::GetInstance()->draw();
 
-    //Wall Frame
-    BackWall::GetInstance()->draw();
-
+        if (GameOver::GetInstance()->isOver())
+            GameOver::GetInstance()->render();
+    }
     SDL_RenderPresent(m_Renderer);
-    // playState->render();
+    
 }
 void Engine::eventsGame()
 {
     KeyboardInput::getInstance()->Listen();
-    // playState->event();
 }
 void Engine::quitGame()
 {

@@ -28,20 +28,10 @@ void Camera::update(float deltatime)
         {
             m_ViewBox.y = SCREEN_HEIGHT - m_ViewBox.h;
         }
-
-        // if (m_ViewBox.x > (2*SCREEN_WIDTH - m_ViewBox.w))
-        // {
-        //     m_ViewBox.x = (2*SCREEN_WIDTH - m_ViewBox.w);
-        // }
-
-        // if (m_ViewBox.y > (2*SCREEN_HEIGHT - m_ViewBox.h))
-        // {
-        //     m_ViewBox.y = (2*SCREEN_HEIGHT - m_ViewBox.h);
-        // }
     }
 
     //Chase the Char with Velocity
-    //Nhan vat chua chet
+    //When main char is not dead
     m_ViewBox.x += camVel;
     if (camVel < 4) camAcc = WALL_ACC;
     if (camVel > 4) camAcc = 0.0005;

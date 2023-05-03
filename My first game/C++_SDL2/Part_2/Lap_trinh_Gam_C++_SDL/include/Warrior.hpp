@@ -28,6 +28,7 @@ public:
     virtual void drawObject();
     virtual void updateObject(float deltaTime);
     virtual void cleanObject();
+    inline bool Dead() { return m_isDead; }
 private:
     void AnimationState();
 
@@ -41,9 +42,8 @@ private:
     bool m_isCrouching;
     bool m_isComboAttacking;
     bool m_isDead;
-    inline bool Dead() { return m_isDead; }
-    //bool m_isHurting;
 
+    //bool m_isHurting;
     float m_AttackTime;
     float m_ComboAttackingTime;
     float m_JumpTime; //How Long Player can Jump

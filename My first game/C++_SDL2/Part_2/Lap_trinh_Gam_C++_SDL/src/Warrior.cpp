@@ -173,7 +173,13 @@ void Warrior::updateObject(float deltaTime)
     {
         m_IsGrounded = false;
     }
-
+    //Fall Death
+    if ((m_Origin->y - Camera::getInstance()->m_ViewBox.y) > 760) 
+    {
+        m_isDead = true;
+        m_Flip = SDL_FLIP_HORIZONTAL;
+        m_Transform->Y -=700;
+    }
 
       
     //Udpate Origin(Camera view)
