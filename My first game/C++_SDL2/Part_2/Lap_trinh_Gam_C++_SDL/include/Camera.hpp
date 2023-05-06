@@ -33,7 +33,7 @@ class Camera
 
 
         void update(float deltatime);
-
+        void playAgain();
 
     private:
         Camera() { m_ViewBox = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT}; }

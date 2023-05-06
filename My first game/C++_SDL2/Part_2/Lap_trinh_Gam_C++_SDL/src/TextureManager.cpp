@@ -24,6 +24,35 @@ bool TextureManager::loadTexture(std::string id, std::string filename)
     return true;
 }
 
+bool TextureManager::loadTextureTex(std::string id, std::string content, TTF_Font* m_Font, SDL_Colour _texColour)
+{
+    //Render text surface
+    SDL_Surface* textSurface = TTF_RenderText_Solid( m_Font, content.c_str(), _texColour );
+    SDL_Texture* texture;
+    if( textSurface == NULL )
+    {
+       std::cout << "Unable to render text surface! SDL_ttf Error:" << TTF_GetError() << std::endl;
+    }
+    else
+    {
+        //Create texture from surface pixels
+        texture = SDL_CreateTextureFromSurface( Engine::GetInstance()->getRenderer(), textSurface );
+
+        if (texture == nullptr) 
+        {
+            std::cout << "Unable to create texture from rendered text! SDL Error: " << std::endl;
+        }
+        else
+        {
+            //Get text dimension
+            m_getTextureHeight[id] = textSurface->h;
+            m_getTextureWidth[id] = textSurface->w;
+        }
+    }
+    m_TextureMap[id] = texture;
+    return texture != NULL;
+}
+
 void TextureManager::draw(std::string id, int x, int y, int width, int height, SDL_RendererFlip filp)
 {
     Vector2D cam = Camera::getInstance()->getPosition() * 0.5;
@@ -58,6 +87,28 @@ void TextureManager::drawBG(std::string id, int x, int y, int width, int height,
     SDL_RenderCopyEx(Engine::GetInstance()->getRenderer(), m_TextureMap[id], &srcRect, &destRect, 0, nullptr, flip);
 }
 
+void TextureManager::drawText(std::string id, std::string content, int x, int y, SDL_Colour textColour, TTF_Font* ttf_font, SDL_Rect* clip, double angle , SDL_RendererFlip flip)
+{
+    //Render text
+    if (!(loadTextureTex(id, content, ttf_font, textColour)))
+    {
+        std::cout << "Failed to render text texture!" << std::endl;
+    }
+    //Set rendering space and render to screen
+    
+    SDL_Rect renderQuad = { x, y, m_getTextureWidth[id], m_getTextureHeight[id] };
+
+    //Set clip rendering dimensions
+    if( clip != NULL )
+    {
+        renderQuad.w = clip->w;
+        renderQuad.h = clip->h;
+    }
+    //Render to screen
+    SDL_RenderCopyEx( Engine::GetInstance()->getRenderer(), m_TextureMap[id], clip, &renderQuad, angle, nullptr, flip );
+}
+
+
 void TextureManager::dropTexture(std::string id)
 {
     SDL_DestroyTexture(m_TextureMap[id]);
@@ -75,8 +126,9 @@ void TextureManager::cleanTexture()
 
     m_TextureMap.clear();
 
-    SDL_Log("Texture Map Clean!");
+    SDL_Log("Texture Clean!");
 }
+
 
 bool TextureManager::parseTextures(std::string sources)
 {

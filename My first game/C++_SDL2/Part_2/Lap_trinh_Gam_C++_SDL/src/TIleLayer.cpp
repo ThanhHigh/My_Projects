@@ -1,6 +1,7 @@
 
 #include "TileLayer.hpp"
 #include "TextureManager.hpp"
+#include "MapParser.hpp"
 
 TileLayer::TileLayer(int tilesize, int colcount, int rowcount, tileMap tilemap, tileSetList tilesets) 
     :m_TileSize (tilesize),
@@ -26,7 +27,7 @@ void TileLayer::render()
 
             if (tileID == 0) continue; 
             // Make sure tileID = 0 will be skip.
-            //Time run map will reduce considerabley
+            // Time run map will reduce considerabley
             else
             {
                 int index = 0;

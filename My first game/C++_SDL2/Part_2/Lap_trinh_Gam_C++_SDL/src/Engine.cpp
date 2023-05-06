@@ -50,6 +50,28 @@ bool Engine::initGame()
         SDL_Log("Failed to create a Renderer: %s ", SDL_GetError());
         return false;
     }
+    else
+    {
+        //Initialize PNG loading
+        int imgFlags = IMG_INIT_PNG;
+        if( !( IMG_Init( imgFlags ) & imgFlags ) )
+        {
+            std::cout << "SDL_image could not initialize! SDL_image Error" <<  IMG_GetError() << std::endl;
+            return false;
+        }
+        //Initialize TTF loading
+        if (TTF_Init() != 0)
+        {
+            std::cout << "SDL_ttf could not initialize! SDL_ttf Error:" << TTF_GetError() << std::endl;
+            return false;
+        }
+        //Open the font
+        m_MenuStartGameFont = TTF_OpenFont( "res/HK_font.ttf", 40 );
+        if(m_MenuStartGameFont == nullptr)
+        {
+            std::cout << "Failed to load lazy font! SDL_ttf Error" << TTF_GetError() << std::endl;
+        }
+    }
 
     //Map
     if (MapParser::GetInstance()->load() == false) //Check error:
@@ -89,6 +111,7 @@ bool Engine::initGame()
 }
 void Engine::updateGame()
 {
+
     float deltaTime = Timer::GetInstance()->getDeltaTime();
 
     if (Menu::GetInstance()->isneedMenu())
@@ -96,7 +119,7 @@ void Engine::updateGame()
         //Menu
         Menu::GetInstance()->update();
     }
-    else
+    else if (!(GameOver::GetInstance()->isOver()))
     {
         updateLevelMap();
 
@@ -107,8 +130,23 @@ void Engine::updateGame()
         BackWall::GetInstance()->udpate();
 
         if (player->Dead()) GameOver::GetInstance()->updateDeath();
-
+    }
+    else
+    {
+        //GameOver
         GameOver::GetInstance()->update();
+
+        //If play again, bring life to warrior, bring the game back
+        if (GameOver::GetInstance()->wantPlayAgain())
+        {
+            player->setLive();
+        
+        //Play Again   
+            Engine::GetInstance()->mapPlayAgain();
+            player->playAgain();
+            BackWall::GetInstance()->playAgian();
+        //Play Again
+        }
     }
 }
 void Engine::renderGame()
@@ -117,26 +155,26 @@ void Engine::renderGame()
     SDL_RenderClear(m_Renderer);
     SDL_SetRenderDrawColor(m_Renderer, 191, 148, 228, 120);
 
-    if (Menu::GetInstance()->isneedMenu())
+    if (Menu::GetInstance()->isneedMenu() )
     {
         //Menu
         Menu::GetInstance()->render();
     }
-    else
+    else if (!(GameOver::GetInstance()->isOver()))
     {
-        //Render and update map to infinity
-        render_update_LevelPart();
+         //Render and update map to infinity
+        Engine::GetInstance()->render_update_LevelPart();
 
         //Player update and render
 
         player->drawObject();
-        // player->updateObject(deltaTime);
 
         //Wall Frame
         BackWall::GetInstance()->draw();
-
-        if (GameOver::GetInstance()->isOver())
-            GameOver::GetInstance()->render();
+    }
+    else
+    {
+        GameOver::GetInstance()->render();
     }
     SDL_RenderPresent(m_Renderer);
     
@@ -151,8 +189,8 @@ void Engine::quitGame()
 }
 void Engine::clearGame()
 {
-    // playState->exit();
     TextureManager::getInstance()->cleanTexture();
+    MapParser::GetInstance()->clean();
     SDL_DestroyRenderer(m_Renderer);
     m_Renderer = nullptr;
     SDL_DestroyWindow(m_Window);
@@ -160,6 +198,7 @@ void Engine::clearGame()
 
     IMG_Quit();
     SDL_Quit();
+    TTF_Quit();
 }
 
 
@@ -224,24 +263,19 @@ void Engine::updateLevelMap()
             int viewBoxX = Camera::getInstance()->getPosition().X;
             if (ObjectX >= LevelPosX && ObjectX <= (LevelPosX + LEVEL_WIDTH - 1))
             {
-                
                 m_currMap = m_LevelPartMapList.at(i).getMapfromLevel();
                 break;
             }
     }
 }
 
-// void PopState()
-// {
-
-// }
-    
-// void PushState(GameState* current)
-// {
-
-// }
-
-// void ChangeState(GameState* target)
-// {
-
-// }
+void Engine::mapPlayAgain()
+{
+    for (int i = 0; i < m_LevelPartMapList.size(); i++)
+    {
+        int random = rand() % (TOTAL_MAP - 1);
+        if (i == 0) random = TOTAL_MAP - 1;
+        GameMap* mapTemp = m_MapList.at(random);
+        m_LevelPartMapList.at(i).setLevelMap(mapTemp);
+    }
+}

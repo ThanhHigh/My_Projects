@@ -1,7 +1,5 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <textures>
-
-
     <texture id = "Player" source = "res/_Idle.png"/>
     <texture id = "Player_Run" source = "res/_Run.png"/>
     <texture id = "Player_Jump" source = "res/_Jump.png"/>
@@ -11,7 +9,8 @@
     <texture id = "Player_AttackComboNoMovement" source = "res/_AttackComboNoMovement.png"/>
     <texture id = "Player_Fall" source = "res/_Fall.png"/>
 
-    <texture id = "Back_ground" source = "res/back_ground_2.png"/>
     <texture id = "BackWall" source = "res/Explosion.png"/>
     <texture id = "Player_Dead" source = "res/_Death.png"/>
+    <texture id = "Menu" source = "res/Menu.png"/>
+    <texture id = "GameOver" source = "res/GameOver.png"/>
 </textures>

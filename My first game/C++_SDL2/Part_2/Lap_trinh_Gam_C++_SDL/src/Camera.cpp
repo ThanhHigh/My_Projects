@@ -41,3 +41,10 @@ void Camera::update(float deltatime)
     //Udate Position
     m_position = Vector2D(m_ViewBox.x, m_ViewBox.y);
 }
+
+void Camera::playAgain()
+{
+    m_ViewBox.x = 0;
+    m_ViewBox.y = 0;
+    camVel = 0;
+}

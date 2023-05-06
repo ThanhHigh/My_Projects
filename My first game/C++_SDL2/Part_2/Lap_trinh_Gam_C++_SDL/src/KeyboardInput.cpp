@@ -24,6 +24,24 @@ void KeyboardInput::Listen()
         case SDL_KEYUP:
             keyUp();
             break;
+        //Mouse
+        case SDL_MOUSEMOTION:
+        {
+            m_MouseClick = false;
+            //Save mouse posi
+            SDL_GetMouseState(&x, &y);
+            break;
+        }
+        case SDL_MOUSEBUTTONDOWN:
+        {
+            m_MouseClick = true;
+            break;
+        }
+        case SDL_MOUSEBUTTONUP:
+        {
+            m_MouseClick = false;
+            break;
+        }
         default:
             break;
         }
@@ -70,4 +88,18 @@ int KeyboardInput::getAxisKey(Axis axis)
         break;
     }
     return res;
+}
+
+bool KeyboardInput::mouseover(SDL_Rect textureRect)
+{
+    if (x < textureRect.x) return false;
+    if (x > textureRect.x + textureRect.w ) return false;
+    if (y < textureRect.y) return false;
+    if (y > textureRect.y + textureRect.h) return false; 
+    return true;
+}
+
+bool KeyboardInput::mouseclick()
+{
+    return m_MouseClick;
 }

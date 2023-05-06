@@ -27,7 +27,6 @@ class MapParser
             return m_MapDict[id];
         }
 
-
         bool load();
         void clean();
 
@@ -40,9 +39,9 @@ class MapParser
         MapParser(){}
         static MapParser* s_Instance;
         std::map <std::string, GameMap*> m_MapDict;
-
         friend class Engine;
         friend class LevelPart;
+        friend class TileLayer;
 };
 
 

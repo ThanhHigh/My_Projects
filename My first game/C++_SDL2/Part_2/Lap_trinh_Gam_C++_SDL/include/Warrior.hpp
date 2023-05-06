@@ -29,6 +29,8 @@ public:
     virtual void updateObject(float deltaTime);
     virtual void cleanObject();
     inline bool Dead() { return m_isDead; }
+    inline void setLive() { m_isDead = false; }
+    void playAgain();
 private:
     void AnimationState();
 

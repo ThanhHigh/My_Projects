@@ -47,6 +47,14 @@ void BackWall::udpate()
 
 }
 
+void BackWall::playAgian()
+{
+    //Change position by Change Camera pos
+    Camera::getInstance()->playAgain();
+    X = Camera::getInstance()->getViewBox().x;
+    Y = Camera::getInstance()->getViewBox().y;
+}
+
 BackWall::~BackWall()
 {
     TextureManager::getInstance()->dropTexture("BackWall");

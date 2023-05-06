@@ -20,13 +20,11 @@ class BackWall
         bool createBackWall();
         //draw
         void draw();
-
         //position
         void udpate();
-
-
         //Deconstructor
         ~BackWall();
+        void playAgian();
     private:
         static BackWall* s_Instance;
         Animation* b_Animation;

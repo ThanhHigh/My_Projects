@@ -34,6 +34,7 @@ public:
     void render_update_LevelPart();
     void updateLevelMap();
     bool createLevel();
+    void mapPlayAgain();
 
 
     // void PopState();
@@ -48,6 +49,8 @@ public:
     {
         return s_Instance = (s_Instance != nullptr) ? s_Instance : new Engine();
     }
+
+    TTF_Font* m_MenuStartGameFont;
 private:
     Engine(){}
 

@@ -178,19 +178,18 @@ void Warrior::updateObject(float deltaTime)
     {
         m_isDead = true;
         m_Flip = SDL_FLIP_HORIZONTAL;
-        m_Transform->Y -=700;
+        m_Transform->Y = m_LastSafePosition.Y;
     }
 
-      
     //Udpate Origin(Camera view)
     m_Origin->x = m_Transform->X + m_Width/2; //Debug
     m_Origin->y = m_Transform->Y + m_Height/2; //Debug
 
+    //BackWallDeath
     if (m_Origin->x - Camera::getInstance()->m_ViewBox.x < 256)
     {
         m_isDead = true;
         m_Flip = SDL_FLIP_HORIZONTAL;
-        m_Transform->X += 15;
     }
     //Animation
     AnimationState();
@@ -241,6 +240,12 @@ void Warrior::AnimationState()
     {
         m_Animation->setPropsAnimation("Player_Dead", 1, 10, 100);
     }
+}
+
+void Warrior::playAgain()
+{
+    m_Transform->X = 400;
+    m_Transform->Y = 10;
 }
 
 

@@ -169,7 +169,7 @@ void Player::jump() {
 
 void Player::gravity() {
 	if (!grounded) {
-		yVel += GRAVITY;
+		yVel += GRAVITY; 
 		if (yVel > MAX_GRAVITY) yVel = MAX_GRAVITY;
 	}
 	else yVel = GRAVITY;
@@ -199,7 +199,7 @@ void Player::knockBack() {
 
 void Player::handleCamera(SDL_Rect& camera, float& camVel) {
 	//Camera tự di chuyển theo x
-	if(!isDead()) camera.x += camVel;
+	if(!isDead()) camera.x += camVel; 
 	float acc = 0.001;
 	if (camVel > 4) acc = 0.0003;
 	if (camVel > 5) acc = 0.00001;

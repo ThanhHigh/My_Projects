@@ -128,7 +128,6 @@ TileLayer* MapParser::ParseTileLayer(TiXmlElement* xmlLayer, tileSetList tileset
 
     // func return tileLayer
     //return (new TileLayer(tilesize, colcount, rowcount, tilemap, tilesets));
-    //Debug
     TileLayer* re_TileLayer = new TileLayer(tilesize, colcount, rowcount, tilemap, tilesets);
     return re_TileLayer;
 }
@@ -143,4 +142,7 @@ void MapParser::clean()
     }
 
     m_MapDict.clear();
+    //Debug 
+        std::cout << "Clear Map in MapParaser !" << std::endl;
+    //Debug
 }

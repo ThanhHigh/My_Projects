@@ -17,13 +17,14 @@ public:
 
     void Listen();
     bool getKeyDown(SDL_Scancode key);
-
     int getAxisKey(Axis axis);
-
+    bool mouseover(SDL_Rect textureRect);
+    bool mouseclick();
 private:
     void keyUp();
     void keyDown();
-
+    int x, y;
+    bool m_MouseClick;
     const Uint8* m_KeyStates;
     static KeyboardInput* s_Instance;
 };

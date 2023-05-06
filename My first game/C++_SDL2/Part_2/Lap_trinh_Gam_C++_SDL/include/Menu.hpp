@@ -6,6 +6,9 @@
 #include <iostream>
 #include "GameState.hpp"
 
+const SDL_Color MOUSEOVER_COLOR = {255, 230, 255, 255};
+const SDL_Color UNMOUSE_COLOR = {180, 180, 20, 240};
+
 class Menu
 {
     public:
@@ -25,8 +28,10 @@ class Menu
         static void setting();
         static void editor();
         static void quit();
-
-
+        SDL_Color colorMenuStart = UNMOUSE_COLOR;
+        SDL_Color colorMenuQuit = UNMOUSE_COLOR;
+        SDL_Rect StartGame;
+        SDL_Rect QuitGame;
         static Menu* s_Instance;
 };
 #endif //Menu_hpp
