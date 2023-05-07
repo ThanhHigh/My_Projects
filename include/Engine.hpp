@@ -58,6 +58,7 @@ public:
     inline Mix_Chunk* getLandSound(){return m_LandSound; }
     inline Mix_Chunk* getRunSound(){return m_RunSound; }
     inline Mix_Chunk* getDeathSound(){return m_DeathSound; }
+    inline Mix_Chunk* getExplosionSound(){ return m_ExplosionSound; }
 
     inline Mix_Music* getBGMusic1(){return m_BGMusic1; }
     inline Mix_Music* getBGMusic2(){return m_BGMusic2; }
@@ -93,6 +94,7 @@ private:
     Mix_Chunk* m_RunSound = nullptr;
     Mix_Chunk* m_LandSound = nullptr;
     Mix_Chunk* m_DeathSound = nullptr;
+    Mix_Chunk* m_ExplosionSound = nullptr;
     
     Mix_Music* m_BGMusic1 = nullptr;
     Mix_Music* m_BGMusic2 = nullptr;

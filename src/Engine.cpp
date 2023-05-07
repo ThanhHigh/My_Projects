@@ -72,6 +72,7 @@ bool Engine::initGame()
 			return false;
 		}
         
+        //Load Media
         //Open the font
         m_MenuStartGameFont = TTF_OpenFont( "res/Elden_Ring.ttf", 50);
         if(m_MenuStartGameFont == nullptr)
@@ -83,6 +84,63 @@ bool Engine::initGame()
         {
             std::cout << "Failed to load lazy font! SDL_ttf Error" << TTF_GetError() << std::endl;
         }
+
+        //Open the Music&Sound
+        m_IntroMusic = Mix_LoadMUS( "res/01 - Enter Hallownest.wav" );
+	    if( m_IntroMusic == NULL )
+	    {
+            std::cout << "Failed to load beat music! SDL_mixer Error:" << Mix_GetError() << std::endl;
+	    }
+
+        m_OutroMusic = Mix_LoadMUS( "res/26 - Hollow Knight.wav" );
+	    if( m_OutroMusic == NULL )
+	    {
+            std::cout << "Failed to load beat music! SDL_mixer Error:" << Mix_GetError() << std::endl;
+	    }
+
+        m_BGMusic1= Mix_LoadMUS( "res/06 - Hornet.wav" );
+	    if( m_BGMusic1 == NULL )
+	    {
+            std::cout << "Failed to load beat music! SDL_mixer Error:" << Mix_GetError() << std::endl;
+	    }
+
+        m_BGMusic2= Mix_LoadMUS( "res/18 - Broken Vessel.wav" );
+	    if( m_BGMusic2 == NULL )
+	    {
+            std::cout << "Failed to load beat music! SDL_mixer Error:" << Mix_GetError() << std::endl;
+	    }
+
+        m_DeathSound = Mix_LoadWAV("res/_death1.wav");
+        if( m_DeathSound == NULL )
+	    {
+            std::cout << "Failed to load beat music! SDL_mixer Error:" << Mix_GetError() << std::endl;
+	    }
+
+        m_RunSound = Mix_LoadWAV("res/_running1.wav");
+        if(m_RunSound == NULL )
+	    {
+            std::cout << "Failed to load beat music! SDL_mixer Error:" << Mix_GetError() << std::endl;
+	    }
+
+        m_JumpSound = Mix_LoadWAV("res/_jump1.wav");
+        if( m_JumpSound == NULL )
+	    {
+            std::cout << "Failed to load beat music! SDL_mixer Error:" << Mix_GetError() << std::endl;
+	    }
+
+        m_ExplosionSound = Mix_LoadWAV("res/Explosion.wav");
+        if(m_ExplosionSound == NULL )
+	    {
+            std::cout << "Failed to load beat music! SDL_mixer Error:" << Mix_GetError() << std::endl;
+	    }
+
+        m_LandSound = Mix_LoadWAV("res/_land1.wav");
+        if(  m_LandSound == NULL )
+	    {
+            std::cout << "Failed to load beat music! SDL_mixer Error:" << Mix_GetError() << std::endl;
+	    }
+        //Load Media
+
     }
 
     //Map
