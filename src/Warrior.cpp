@@ -57,6 +57,7 @@ void Warrior::updateObject(float deltaTime)
         m_RigidBody->applyForceX(RIGHTWARD * RUN_FORCE);
         m_Flip = SDL_FLIP_NONE;
         m_isRunning = true;
+        // Mix_PlayChannel(-1, Engine::GetInstance()->getRunSound(), 0);
     }
 
     //Back-ward
@@ -93,6 +94,7 @@ void Warrior::updateObject(float deltaTime)
         m_IsJumping = true;
         m_IsGrounded = false;
         m_RigidBody->applyForceY(UPWARD * m_JumpForce * 5);
+        Mix_PlayChannel(-1, Engine::GetInstance()->getJumpSound(), 0);
     }
     if ((KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_K) || KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_W) || KeyboardInput::getInstance()->getKeyDown(SDL_SCANCODE_SPACE)) && m_IsJumping && m_JumpTime > 0)
     {
@@ -177,6 +179,7 @@ void Warrior::updateObject(float deltaTime)
     if ((m_Origin->y - Camera::getInstance()->m_ViewBox.y) > 760) 
     {
         m_isDead = true;
+        Mix_PlayChannel(-1, Engine::GetInstance()->getDeathSound(), 0);
         m_Flip = SDL_FLIP_HORIZONTAL;
         m_Transform->Y = m_LastSafePosition.Y;
     }
@@ -189,6 +192,7 @@ void Warrior::updateObject(float deltaTime)
     if (m_Origin->x - Camera::getInstance()->m_ViewBox.x < 256)
     {
         m_isDead = true;
+        Mix_PlayChannel(-1, Engine::GetInstance()->getDeathSound(), 0);
         m_Flip = SDL_FLIP_HORIZONTAL;
     }
     //Animation

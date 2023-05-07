@@ -116,7 +116,7 @@ bool Engine::initGame()
             std::cout << "Failed to load beat music! SDL_mixer Error:" << Mix_GetError() << std::endl;
 	    }
 
-        m_RunSound = Mix_LoadWAV("res/_running1.wav");
+        m_RunSound = Mix_LoadWAV("res/_running.wav");
         if(m_RunSound == NULL )
 	    {
             std::cout << "Failed to load beat music! SDL_mixer Error:" << Mix_GetError() << std::endl;
@@ -265,10 +265,11 @@ void Engine::clearGame()
     m_Renderer = nullptr;
     SDL_DestroyWindow(m_Window);
     m_Window = nullptr;
-
+    Mix_Quit();
+    TTF_Quit();
     IMG_Quit();
     SDL_Quit();
-    TTF_Quit();
+
 }
 
 
