@@ -175,6 +175,8 @@ void Warrior::updateObject(float deltaTime)
     {
         m_IsGrounded = false;
     }
+
+
     //Fall Death
     if ((m_Origin->y - Camera::getInstance()->m_ViewBox.y) > 760) 
     {
