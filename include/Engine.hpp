@@ -100,6 +100,10 @@ private:
     Mix_Music* m_BGMusic2 = nullptr;
     Mix_Music* m_IntroMusic = nullptr;
     Mix_Music* m_OutroMusic = nullptr;
+
+    bool PlayState;
+    bool MenuState;
+    bool GameOverState;
 };
 
 #endif //ENGINE_HPP

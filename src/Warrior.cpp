@@ -193,7 +193,10 @@ void Warrior::updateObject(float deltaTime)
     if ((m_Origin->y - Camera::getInstance()->m_ViewBox.y) > 700) 
     {
         m_Deadtorender = true;
-        Mix_PlayChannel(-1, Engine::GetInstance()->getDeathSound(), 0);
+        if (Mix_Playing(0) == 0)
+        {
+            Mix_PlayChannel(0, Engine::GetInstance()->getDeathSound(), 0);
+        }
         m_Flip = SDL_FLIP_HORIZONTAL;
     }
 
@@ -210,7 +213,10 @@ void Warrior::updateObject(float deltaTime)
     if (m_Origin->x - Camera::getInstance()->m_ViewBox.x < 256)
     {
         m_Deadtorender = true;
-        Mix_PlayChannel(-1, Engine::GetInstance()->getDeathSound(), 0);
+        if (Mix_Playing(0) == 0)
+        {
+            Mix_PlayChannel(0, Engine::GetInstance()->getDeathSound(), 0);
+        }
         m_Flip = SDL_FLIP_HORIZONTAL;
     }
     //Animation

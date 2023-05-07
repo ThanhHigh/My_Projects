@@ -178,18 +178,78 @@ bool Engine::initGame()
     //Menu&GameOVer
     Menu::GetInstance()->init();
     GameOver::GetInstance()->init();
+
+    //State
+    MenuState = true;
+    PlayState = false;
+    GameOverState = false;
 }
 void Engine::updateGame()
 {
 
     float deltaTime = Timer::GetInstance()->getDeltaTime();
 
+    // if (Menu::GetInstance()->isneedMenu())
+    // {
+    //     Menu::GetInstance()->update();
+    // }
+    // else if (!(GameOver::GetInstance()->isOver()))
+    // {
+    //     updateLevelMap();
+
+    //     player->updateObject(deltaTime);
+
+    //     Camera::getInstance()->update(deltaTime);
+
+    //     BackWall::GetInstance()->udpate();
+
+    //     if (player->Dead()) GameOver::GetInstance()->updateDeath();
+    // }
+    // else
+    // {
+    //     //GameOver
+    //     GameOver::GetInstance()->update();
+
+    //     //If play again, bring life to warrior, bring the game back
+    //     if (GameOver::GetInstance()->wantPlayAgain())
+    //     {
+    //         player->setLive();
+        
+    //     //Play Again   
+    //         Engine::GetInstance()->mapPlayAgain();
+    //         player->playAgain();
+    //         BackWall::GetInstance()->playAgian();
+    //     //Play Againd
+    //     }
+    // }
+
     if (Menu::GetInstance()->isneedMenu())
     {
-        //Menu
+        MenuState = true;
+        PlayState = false;
+        GameOverState = false;
+    }
+    else
+    {
+        MenuState = false;
+        if (!(GameOver::GetInstance()->isOver()))
+        {
+            GameOverState = false;
+            PlayState = true;
+        }
+        else
+        {
+            GameOverState = true;
+            PlayState = false;
+        }
+    }
+
+
+    if (MenuState == true && PlayState == false && GameOverState == false)
+    {
         Menu::GetInstance()->update();
     }
-    else if (!(GameOver::GetInstance()->isOver()))
+    if (MenuState == false && PlayState == true && GameOverState == false)
     {
         updateLevelMap();
 
@@ -201,7 +261,7 @@ void Engine::updateGame()
 
         if (player->Dead()) GameOver::GetInstance()->updateDeath();
     }
-    else
+    if (MenuState == false && PlayState == false && GameOverState == true)
     {
         //GameOver
         GameOver::GetInstance()->update();
@@ -215,7 +275,7 @@ void Engine::updateGame()
             Engine::GetInstance()->mapPlayAgain();
             player->playAgain();
             BackWall::GetInstance()->playAgian();
-        //Play Again
+        //Play Againd
         }
     }
 }
@@ -225,12 +285,46 @@ void Engine::renderGame()
     SDL_RenderClear(m_Renderer);
     SDL_SetRenderDrawColor(m_Renderer, 191, 148, 228, 120);
 
-    if (Menu::GetInstance()->isneedMenu() )
+    // if (Menu::GetInstance()->isneedMenu() )
+    // {
+    //     //Menu
+    //     Menu::GetInstance()->render();
+    // }
+    // else if (!(GameOver::GetInstance()->isOver()))
+    // {
+    //      //Render and update map to infinity
+    //     Engine::GetInstance()->render_update_LevelPart();
+
+    //     //Player update and render
+
+    //     player->drawObject();
+
+    //     //Wall Frame
+    //     BackWall::GetInstance()->draw();
+    // }
+    // else
+    // {
+    //     GameOver::GetInstance()->render();
+    // }
+
+
+    if (MenuState == true && PlayState == false && GameOverState == false)
     {
         //Menu
         Menu::GetInstance()->render();
+        if (Mix_PlayingMusic() == 0)
+        {
+            Mix_PlayMusic(m_IntroMusic, -1);
+        }
     }
-    else if (!(GameOver::GetInstance()->isOver()))
+    else
+    {
+        if (Mix_PlayingMusic() != 0)
+        {
+            Mix_HaltMusic();
+        }
+    }
+    if (MenuState == false && PlayState == true && GameOverState == false)
     {
          //Render and update map to infinity
         Engine::GetInstance()->render_update_LevelPart();
@@ -242,7 +336,7 @@ void Engine::renderGame()
         //Wall Frame
         BackWall::GetInstance()->draw();
     }
-    else
+    if (MenuState == false && PlayState == false && GameOverState == true)
     {
         GameOver::GetInstance()->render();
     }
