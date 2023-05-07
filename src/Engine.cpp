@@ -21,7 +21,7 @@ Play* playState = nullptr;
 
 bool Engine::initGame()
 {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0 && IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG) != 0)
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO ) != 0 && IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG) != 0)
     {
         SDL_Log("Failed to initilize SDL: %s ", SDL_GetError());
         return false;
@@ -65,6 +65,13 @@ bool Engine::initGame()
             std::cout << "SDL_ttf could not initialize! SDL_ttf Error:" << TTF_GetError() << std::endl;
             return false;
         }
+        //Initialize SDL_mixer
+		if( Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 ) < 0 )
+		{
+			std::cout << "SDL_mixer could not initialize! SDL_mixer Error:" << Mix_GetError() << std::endl;
+			return false;
+		}
+        
         //Open the font
         m_MenuStartGameFont = TTF_OpenFont( "res/Elden_Ring.ttf", 50);
         if(m_MenuStartGameFont == nullptr)
