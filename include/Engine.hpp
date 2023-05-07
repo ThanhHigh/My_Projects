@@ -104,6 +104,7 @@ private:
     bool PlayState;
     bool MenuState;
     bool GameOverState;
+    bool ChangedState;
 };
 
 #endif //ENGINE_HPP

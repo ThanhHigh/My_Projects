@@ -183,45 +183,18 @@ bool Engine::initGame()
     MenuState = true;
     PlayState = false;
     GameOverState = false;
+    ChangedState = false;
 }
 void Engine::updateGame()
 {
 
     float deltaTime = Timer::GetInstance()->getDeltaTime();
 
-    // if (Menu::GetInstance()->isneedMenu())
-    // {
-    //     Menu::GetInstance()->update();
-    // }
-    // else if (!(GameOver::GetInstance()->isOver()))
-    // {
-    //     updateLevelMap();
-
-    //     player->updateObject(deltaTime);
-
-    //     Camera::getInstance()->update(deltaTime);
-
-    //     BackWall::GetInstance()->udpate();
-
-    //     if (player->Dead()) GameOver::GetInstance()->updateDeath();
-    // }
-    // else
-    // {
-    //     //GameOver
-    //     GameOver::GetInstance()->update();
-
-    //     //If play again, bring life to warrior, bring the game back
-    //     if (GameOver::GetInstance()->wantPlayAgain())
-    //     {
-    //         player->setLive();
-        
-    //     //Play Again   
-    //         Engine::GetInstance()->mapPlayAgain();
-    //         player->playAgain();
-    //         BackWall::GetInstance()->playAgian();
-    //     //Play Againd
-    //     }
-    // }
+    
+    if (Menu::GetInstance()->isneedMenu() && ((PlayState == true) || (GameOverState == true)))
+    {
+        ChangedState = true;
+    }
 
     if (Menu::GetInstance()->isneedMenu())
     {
@@ -234,11 +207,19 @@ void Engine::updateGame()
         MenuState = false;
         if (!(GameOver::GetInstance()->isOver()))
         {
+            if (PlayState == false)
+            {
+                ChangedState = true;
+            }
             GameOverState = false;
             PlayState = true;
         }
         else
         {
+            if (GameOverState == false)
+            {
+                ChangedState = true;
+            }
             GameOverState = true;
             PlayState = false;
         }
@@ -278,6 +259,48 @@ void Engine::updateGame()
         //Play Againd
         }
     }
+
+    //Mussic
+    if (MenuState == true && PlayState == false && GameOverState == false)
+    {
+        if (Mix_PlayingMusic() == 0)
+        {
+            Mix_PlayMusic(m_IntroMusic, -1);
+        } 
+    }
+    if (MenuState == false && PlayState == true && GameOverState == false)
+    {
+        if (ChangedState)
+        {
+            if (Mix_PlayingMusic() != 0)
+            {
+                Mix_HaltMusic();
+            }
+            ChangedState = false;
+        }
+        if (Mix_PlayingMusic() == 0)
+        {
+            Mix_PlayMusic(m_BGMusic1, -1);
+        } 
+    }
+    if (MenuState == false && PlayState == false && GameOverState == true)
+    {
+        if (ChangedState)
+        {
+            if (Mix_PlayingMusic() != 0)
+            {
+                Mix_HaltMusic();
+            }
+            ChangedState = false;
+        }
+        if (Mix_PlayingMusic() == 0)
+        {
+            Mix_PlayMusic(m_OutroMusic, -1);
+        } 
+    }
+
+
+    //Music
 }
 void Engine::renderGame()
 { 
@@ -285,48 +308,18 @@ void Engine::renderGame()
     SDL_RenderClear(m_Renderer);
     SDL_SetRenderDrawColor(m_Renderer, 191, 148, 228, 120);
 
-    // if (Menu::GetInstance()->isneedMenu() )
-    // {
-    //     //Menu
-    //     Menu::GetInstance()->render();
-    // }
-    // else if (!(GameOver::GetInstance()->isOver()))
-    // {
-    //      //Render and update map to infinity
-    //     Engine::GetInstance()->render_update_LevelPart();
-
-    //     //Player update and render
-
-    //     player->drawObject();
-
-    //     //Wall Frame
-    //     BackWall::GetInstance()->draw();
-    // }
-    // else
-    // {
-    //     GameOver::GetInstance()->render();
-    // }
+    
 
 
     if (MenuState == true && PlayState == false && GameOverState == false)
     {
         //Menu
         Menu::GetInstance()->render();
-        if (Mix_PlayingMusic() == 0)
-        {
-            Mix_PlayMusic(m_IntroMusic, -1);
-        }
-    }
-    else
-    {
-        if (Mix_PlayingMusic() != 0)
-        {
-            Mix_HaltMusic();
-        }
+       
     }
     if (MenuState == false && PlayState == true && GameOverState == false)
     {
-         //Render and update map to infinity
+
         Engine::GetInstance()->render_update_LevelPart();
 
         //Player update and render
@@ -336,10 +329,12 @@ void Engine::renderGame()
         //Wall Frame
         BackWall::GetInstance()->draw();
     }
+
     if (MenuState == false && PlayState == false && GameOverState == true)
     {
         GameOver::GetInstance()->render();
     }
+
     SDL_RenderPresent(m_Renderer);
     
 }
