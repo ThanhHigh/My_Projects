@@ -54,6 +54,16 @@ public:
     inline TTF_Font* getGameOverFont(){ return m_GameOverFont; }
     inline void setMenuFont(TTF_Font* tempFont){ m_MenuStartGameFont = tempFont; }
     inline void setGameOverFont(TTF_Font* tempFont){ m_GameOverFont = tempFont; }
+    inline Mix_Chunk* getJumpSound(){return m_JumpSound; }
+    inline Mix_Chunk* getLandSound(){return m_LandSound; }
+    inline Mix_Chunk* getRunSound(){return m_RunSound; }
+    inline Mix_Chunk* getDeathSound(){return m_DeathSound; }
+
+    inline Mix_Music* getBGMusic1(){return m_BGMusic1; }
+    inline Mix_Music* getBGMusic2(){return m_BGMusic2; }
+    inline Mix_Music* getIntroMusic(){return m_IntroMusic; }
+    inline Mix_Music* getOutroMusic(){return m_OutroMusic; }
+
 private:
     Engine(){}
 
@@ -78,6 +88,16 @@ private:
 
     TTF_Font* m_MenuStartGameFont = nullptr;
     TTF_Font* m_GameOverFont = nullptr;
+
+    Mix_Chunk* m_JumpSound = nullptr;
+    Mix_Chunk* m_RunSound = nullptr;
+    Mix_Chunk* m_LandSound = nullptr;
+    Mix_Chunk* m_DeathSound = nullptr;
+    
+    Mix_Music* m_BGMusic1 = nullptr;
+    Mix_Music* m_BGMusic2 = nullptr;
+    Mix_Music* m_IntroMusic = nullptr;
+    Mix_Music* m_OutroMusic = nullptr;
 };
 
 #endif //ENGINE_HPP
