@@ -44,6 +44,7 @@ private:
     bool m_isCrouching;
     bool m_isComboAttacking;
     bool m_isDead;
+    bool m_Deadtorender;
 
     //bool m_isHurting;
     float m_AttackTime;

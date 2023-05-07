@@ -19,6 +19,7 @@ Warrior::Warrior(Properties* props) : Character(props)
     m_isCrouching = false;
     m_isComboAttacking = false;
     m_isDead = false;
+    m_Deadtorender = false;
 
     m_Flip = SDL_FLIP_NONE;
     m_JumpTime = JUMP_TIME;
@@ -138,16 +139,22 @@ void Warrior::updateObject(float deltaTime)
         m_ComboAttackingTime = ATTACKCOMBO_TIME;
     }
 
-    //Death
-    if (m_isDead && m_DeathTime > 0)
+    //Death to render
+    if (m_Deadtorender && m_DeathTime > 0)
     {
         m_DeathTime -= deltaTime;
+        if (m_DeathTime > -29.5)
+        {
+            m_Transform->X = m_Transform->X - 0.5;
+        }
     }
     else
     {
-        m_isDead = false;
+        m_Deadtorender = false;
         m_DeathTime = DEATH_TIME;
     }
+
+    
 
 
     //Move on X axis
@@ -178,12 +185,16 @@ void Warrior::updateObject(float deltaTime)
 
 
     //Fall Death
-    if ((m_Origin->y - Camera::getInstance()->m_ViewBox.y) > 760) 
+    if ((m_Origin->y - Camera::getInstance()->m_ViewBox.y) > 780) 
     {
         m_isDead = true;
+    }
+    //Fall Death to render
+    if ((m_Origin->y - Camera::getInstance()->m_ViewBox.y) > 700) 
+    {
+        m_Deadtorender = true;
         Mix_PlayChannel(-1, Engine::GetInstance()->getDeathSound(), 0);
         m_Flip = SDL_FLIP_HORIZONTAL;
-        m_Transform->Y = m_LastSafePosition.Y;
     }
 
     //Udpate Origin(Camera view)
@@ -191,9 +202,14 @@ void Warrior::updateObject(float deltaTime)
     m_Origin->y = m_Transform->Y + m_Height/2; //Debug
 
     //BackWallDeath
-    if (m_Origin->x - Camera::getInstance()->m_ViewBox.x < 256)
+    if (m_Origin->x - Camera::getInstance()->m_ViewBox.x < 230)
     {
         m_isDead = true;
+    }
+    //BackWallDeath to render
+    if (m_Origin->x - Camera::getInstance()->m_ViewBox.x < 256)
+    {
+        m_Deadtorender = true;
         Mix_PlayChannel(-1, Engine::GetInstance()->getDeathSound(), 0);
         m_Flip = SDL_FLIP_HORIZONTAL;
     }
@@ -242,7 +258,7 @@ void Warrior::AnimationState()
         m_Animation->setPropsAnimation("Player_Jump", 1, 3, 100);
     }
 
-    if (m_isDead)
+    if (m_Deadtorender)
     {
         m_Animation->setPropsAnimation("Player_Dead", 1, 10, 100);
     }
@@ -252,6 +268,8 @@ void Warrior::playAgain()
 {
     m_Transform->X = 400;
     m_Transform->Y = 10;
+    m_isDead = false;
+    m_Deadtorender = false;
 }
 
 
