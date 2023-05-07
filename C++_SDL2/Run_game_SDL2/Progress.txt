@@ -1,1 +1,0 @@
-19/03: Have a bug that can move player across the middle of screen
