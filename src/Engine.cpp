@@ -245,7 +245,17 @@ void Engine::updateGame()
         player->updateObject(deltaTime);
 
         //scoreupdate
-
+        if (m_Score > m_HighScore)
+        {
+            m_HighScore = m_Score;
+        }
+        //update highscore
+            std::ofstream outfile;
+            outfile.open("res/HighScore.txt");
+            outfile.clear();
+            outfile << m_HighScore;
+            outfile.close();
+            //update highscore
 
         //scoreupdate
 
@@ -360,6 +370,7 @@ void Engine::renderGame()
             outfile.close();
             //update highscore
         }
+        readfile.close();
         ss.str("");
         ss << m_HighScore;
         m_HighScoreText = "";
