@@ -70,6 +70,10 @@ private:
 
     static Engine* s_Instance;
     bool  m_Running;
+    int m_Score;
+    int m_HighScore;
+    std::string m_ScoreText;
+    std::string m_HighScoreText;
 
     SDL_Window* m_Window;
     SDL_Renderer* m_Renderer;
@@ -89,6 +93,7 @@ private:
 
     TTF_Font* m_MenuStartGameFont = nullptr;
     TTF_Font* m_GameOverFont = nullptr;
+    TTF_Font* m_HighScoreFont = nullptr;
 
     Mix_Chunk* m_JumpSound = nullptr;
     Mix_Chunk* m_RunSound = nullptr;

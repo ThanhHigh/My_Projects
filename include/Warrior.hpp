@@ -31,6 +31,7 @@ public:
     inline bool Dead() { return m_isDead; }
     inline void setLive() { m_isDead = false; }
     void playAgain();
+    inline Uint32 getDistance(){ return m_Distance; }
 private:
     void AnimationState();
 
@@ -52,6 +53,7 @@ private:
     float m_JumpTime; //How Long Player can Jump
     float m_JumpForce; 
     float m_DeathTime;
+    Uint32 m_Distance;
 
     Collider* m_Collider; //Box around the Player
     Animation* m_Animation;

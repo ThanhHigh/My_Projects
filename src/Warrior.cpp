@@ -155,7 +155,7 @@ void Warrior::updateObject(float deltaTime)
     }
 
     
-
+    m_Distance = m_Transform->X;
 
     //Move on X axis
     m_RigidBody->updateRigidBody(deltaTime);

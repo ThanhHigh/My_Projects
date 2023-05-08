@@ -10,7 +10,7 @@
 #include "Menu.hpp"
 #include "GameOver.hpp"
 #include <iostream>
-
+#include <fstream>
 #include <SDL2/SDL_image.h>
 
 KeyboardInput* KeyboardInput::s_Instance = nullptr;
@@ -81,6 +81,11 @@ bool Engine::initGame()
         }
         m_GameOverFont = TTF_OpenFont("res/HK_font.ttf", 40);
         if (m_GameOverFont == nullptr)
+        {
+            std::cout << "Failed to load lazy font! SDL_ttf Error" << TTF_GetError() << std::endl;
+        }
+        m_HighScoreFont = TTF_OpenFont("res/Uni_Pixel.ttf", 30);
+        if (m_HighScoreFont == nullptr)
         {
             std::cout << "Failed to load lazy font! SDL_ttf Error" << TTF_GetError() << std::endl;
         }
@@ -236,6 +241,11 @@ void Engine::updateGame()
 
         player->updateObject(deltaTime);
 
+        //scoreupdate
+
+
+        //scoreupdate
+
         Camera::getInstance()->update(deltaTime);
 
         BackWall::GetInstance()->udpate();
@@ -290,6 +300,7 @@ void Engine::updateGame()
             if (Mix_PlayingMusic() != 0)
             {
                 Mix_HaltMusic();
+                Mix_HaltChannel(1);
             }
             ChangedState = false;
         }
@@ -308,9 +319,6 @@ void Engine::renderGame()
     SDL_RenderClear(m_Renderer);
     SDL_SetRenderDrawColor(m_Renderer, 191, 148, 228, 120);
 
-    
-
-
     if (MenuState == true && PlayState == false && GameOverState == false)
     {
         //Menu
@@ -325,6 +333,36 @@ void Engine::renderGame()
         //Player update and render
 
         player->drawObject();
+
+        //Score render
+        if (m_Score < player->getDistance() / 16) m_Score = player->getDistance() / 16;
+        std::stringstream ss;
+        ss.str("");
+        ss << m_Score;
+        m_ScoreText = "";
+        m_ScoreText = "Score: " + ss.str() + "m";
+        SDL_Color whiteColor = {255, 255, 255, 255};
+        SDL_Color yellowColor = {255, 255, 5, 255};
+
+        std::ifstream readfile;
+        readfile.open("res/HighScore.txt");
+        if (readfile.fail())
+        {
+            //update highscore
+            std::ofstream outfile;
+            outfile.open("res/HighScore.txt");
+            outfile.clear();
+            outfile << m_HighScore;
+            outfile.close();
+            //update highscore
+        }
+        ss.str("");
+        ss << m_HighScore;
+        m_HighScoreText = "";
+        m_HighScoreText = "Score: " + ss.str() + "m";
+
+        TextureManager::getInstance()->drawText("Score", m_ScoreText, 1200, 20, whiteColor, m_HighScoreFont);
+        //Score render
 
         //Wall Frame
         BackWall::GetInstance()->draw();

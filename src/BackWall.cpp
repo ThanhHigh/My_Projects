@@ -1,9 +1,12 @@
 //BackWall [source]
 #include <iostream>
+#include <SDL2/SDL_mixer.h>
 
+#include "Engine.hpp"
 #include "BackWall.hpp"
 #include "Camera.hpp"
 #include "CollisionHandler.hpp"
+
 
 BackWall* BackWall::s_Instance = nullptr;
 
@@ -44,6 +47,12 @@ void BackWall::udpate()
     //Chase Char : Chase Camera
     X = Camera::getInstance()->getViewBox().x;
     Y = Camera::getInstance()->getViewBox().y;
+
+    //Music
+    if (Mix_Playing(1) == 0)
+    {
+        Mix_PlayChannel(1, Engine::GetInstance()->getExplosionSound(), -1);
+    }
 
 }
 

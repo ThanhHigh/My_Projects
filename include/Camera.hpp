@@ -12,8 +12,8 @@ const int SCREEN_WIDTH = 1344;
 const int SCREEN_HEIGHT = 768;
 
 const float WALL_VEL = 0.5f;
-const float WALL_ACC = 0.001f;
-const float WALL_VEL_MAX = 5.0f;
+const float WALL_ACC = 0.003f;
+const float WALL_VEL_MAX = 5.5f;
 
 class Camera
 {
