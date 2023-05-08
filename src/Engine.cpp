@@ -189,6 +189,9 @@ bool Engine::initGame()
     PlayState = false;
     GameOverState = false;
     ChangedState = false;
+
+    //Score
+    m_Score = 0;
 }
 void Engine::updateGame()
 {
@@ -266,6 +269,7 @@ void Engine::updateGame()
             Engine::GetInstance()->mapPlayAgain();
             player->playAgain();
             BackWall::GetInstance()->playAgian();
+            m_Score = 0;
         //Play Againd
         }
     }
@@ -335,7 +339,7 @@ void Engine::renderGame()
         player->drawObject();
 
         //Score render
-        if (m_Score < player->getDistance() / 16) m_Score = player->getDistance() / 16;
+        if (m_Score < (player->getDistance() / 16)) m_Score = player->getDistance() / 16;
         std::stringstream ss;
         ss.str("");
         ss << m_Score;
@@ -361,7 +365,7 @@ void Engine::renderGame()
         m_HighScoreText = "";
         m_HighScoreText = "Score: " + ss.str() + "m";
 
-        TextureManager::getInstance()->drawText("Score", m_ScoreText, 1200, 20, whiteColor, m_HighScoreFont);
+        TextureManager::getInstance()->drawText("Score", m_ScoreText, 1150, 20, whiteColor, m_HighScoreFont);
         //Score render
 
         //Wall Frame

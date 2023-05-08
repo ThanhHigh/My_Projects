@@ -70,8 +70,8 @@ private:
 
     static Engine* s_Instance;
     bool  m_Running;
-    int m_Score;
-    int m_HighScore;
+    int m_Score = 0;
+    int m_HighScore = 0;
     std::string m_ScoreText;
     std::string m_HighScoreText;
 
