@@ -97,5 +97,11 @@ Trong quá trình làm game em có tham khảo tài liêu, hình ảnh, âm than
 - Tham khảo thuật toán [DeltaTime](https://www.youtube.com/watch?v=rWtfClpWSb8)
 - Tham khảo cách áp dụng kiến thức cơ bản của TMX vào chương trình thông qua Video hướng dẫn: [Tile Map Parser SDL Game](https://www.youtube.com/watch?v=3DKriWbJJ50&list=PL-K0viiuJ2RctP5nlJlqmHGeh66-GOZR_&index=15)
 
+
+### Hướng phát triển
+Game có thể cải tiến thêm nhiều tính năng trong đó có thể:
+- Cải tiến thuật toán nhảy cho mượt mà hơn
+- Thêm chướng ngại vật bằng các AI
+
 ### Tổng kết (Review)
 Sau quãng thời gian làm Bài tập lớn, em cảm thấy mình tiến bộ hơn về cả kiến thức và tư duy lập trình. Cảm ơn vì đã dành thời gian để đọc, em mong sẽ nhận được số điểm xứng đáng cho bài tập lớn này.
