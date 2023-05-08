@@ -1,5 +1,5 @@
 # Knight-Run
-![alt text](https://ibb.co/Dkp5KQt)
+![alt text](<a href="https://ibb.co/Dkp5KQt"><img src="https://i.ibb.co/BjNqsBt/Man-Hinh-Nho.jpg" alt="Man-Hinh-Nho" border="0"></a>)
 Nguyễn Đức Thành - UET
 22021150 - K67CB
 
