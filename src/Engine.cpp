@@ -366,6 +366,7 @@ void Engine::renderGame()
         m_HighScoreText = "Score: " + ss.str() + "m";
 
         TextureManager::getInstance()->drawText("Score", m_ScoreText, 1150, 20, whiteColor, m_HighScoreFont);
+        TextureManager::getInstance()->drawText("HighScore", m_HighScoreText, 1150, 40, yellowColor, m_HighScoreFont);
         //Score render
 
         //Wall Frame
