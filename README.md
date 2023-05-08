@@ -27,9 +27,8 @@ Bài tập lớn - Game (môn học: Lập trình Nâng cao - INT2215_1)
 ### Tổng quan (Overview)
 ##### Cách build
 - Đê có thể chơi game đầu tiên cần phải cài đặt hoàn chỉnh SDL2, SDL2_imgae, SDL2_mixer, SDL2_ttf.
-- Clone project về máy:
--   https://github.com/ThanhHigh/My_Projects.git
--Game có thể được chạy dễ dàng trên VS Code bằng cách chọn Terminal -> RunTask -> C++: Build Debug and Run
+- Clone project về máy: https://github.com/ThanhHigh/My_Projects.git
+- Game có thể được chạy dễ dàng trên VS Code bằng cách chọn Terminal -> RunTask -> C++: Build Debug and Run
 ##### Chạy Game:
 Khi game chạy bạn sẽ bắt đầu từ Menu với 2 sự lựa chọn: Play Game và Quit Game. Chọn Play Game bạn sẽ điều khiển Knight tiến lên phía trước vượt nhảy qua các cột đá. Để cho nhân vật bạn xảy chân hoặc chạy quá chậm : Game sẽ kết thúc.
 
